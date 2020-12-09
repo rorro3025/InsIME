@@ -1,9 +1,30 @@
+//test conexion de script 
 console.log("Estas en el inicio del script");
 
 //crecion de los elementos FB
 const auth = firebase.auth();
 const fs = firebase.firestore();
 
+//objeto usuario 
+var local_user = {
+  name: "",
+  email: "",
+  photoUrl: "",
+  uid: "",
+  emailVerified: ""
+};
+const setUser = (user) => {
+  if (user) {
+    var user_active = auth.currentUser;
+    local_user.name = user_active.displayName;
+    local_user.email = user_active.email;
+    local_user.uid = user_active.uid;
+    local_user.photoUrl = user_active.photoURL;
+    local_user.emailVerified = user_active.emailVerified;
+  } else {
+    local_user.name = "Unknowed";
+  }
+};
 const sing_in = document.querySelector("#login-form");
 
 sing_in.addEventListener('submit', (e) => {
@@ -23,10 +44,10 @@ sing_in.addEventListener('submit', (e) => {
       var errorMessage = error.message;
       if (errorCode == 'auth/user-not-found') {
         alert('Usuario no registrado');
-        $('#singin-window').modal('hide');
+      } else if (errorCode == 'auth/wrong-password') {
+        alert('Contraseña incorrecta');
       } else {
         alert(errorMessage);
-        $('#singin-window').modal('hide');
       }
       console.log(error);
     });
@@ -43,19 +64,11 @@ logout.addEventListener('click', e => {
     });
 });
 // informacion del usuario
-var user_active = auth.currentUser;
-var name, email, photoUrl, uid, emailVerified;
-if (user_active != null){
-  name = user_active.displayName;
-  email = user_active.email;
-  photoUrl = user_active.photoURL;
-  emailVerified = user_active.emailVerified;
-  uid = user_active.uid;
-}
 //Estado de usuario
 auth.onAuthStateChanged(user => {
   if (user) {
-    console.log("Existe usuario activo user: " + uid);
+    setUser(user);
+    console.log("Existe usuario activo user: " + local_user.name, "URL: " + local_user.email);
   } else {
     console.log("no hay usuario activo");
   }
