@@ -68,7 +68,7 @@ logout.addEventListener('click', e => {
 auth.onAuthStateChanged(user => {
   if (user) {
     setUser(user);
-    console.log("Existe usuario activo user: " + local_user.name, "URL: " + local_user.email);
+    console.log("Existe usuario activo user: " + local_user.name, "URL: " + local_user.photoUrl+ "otro: "+ local_user.uid);
   } else {
     console.log("no hay usuario activo");
   }
