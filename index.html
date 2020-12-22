@@ -11,73 +11,10 @@
 </head>
 
 <body>
+    <!--Header banner -->
     <div class="container-fluid" style="Background-color:#003366;">
         <p align="left"><a href="index.html"><img src="img/logounam.png" alt="UNAM" width="424" height="130" border="0"
                     longdesc="LOGOUNAM"></a></p>
-    </div>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html">Inicio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav justify-content-end ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="profesores_crud.html" aria-disabled="true">Inscripcion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="schedules" aria-disabled="true">Horarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#help-window"
-                            aria-disabled="true">Ayuda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#close-question"
-                            aria-disabled="true">Cerrar sesion</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <!--Modal ayuda-->
-    <div class="modal fade" id="help-window" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¿Necesitas ayuda?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="text-justify">​
-                        Para navegar en el sistema de inscripción de los laboratorios de IME, es muy facil, en la
-                        pestaña “Home” podrás acceder a datos importantes acerca de la UNAM, en la pestaña “Inscripción”
-                        podrás inscribirte a los laboratorios de tu semestre en la fecha y horario que se te asignaron,
-                        en la pestaña “Horarios” accederás a los horarios disponibles para cada laboratorio, con su
-                        respectiva información, al igual que podrás cerrar sesion cuando lo desees. Si necesitas mas
-                        ayuda contáctanos a nuestro correo: ingeime@comunidad.unam.mx​
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Modal cerrar sesion-->
-    <div class="modal" id="close-question" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    ¿Quieres cerrar sesion?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
-                    <button type="button" class="btn btn-primary" id="logout-btn">Cerrar sesion</button>
-                </div>
-            </div>
-        </div>
     </div>
     <!--Contenido Principal-->
     <div class="container">
@@ -97,13 +34,13 @@
                         <div class="form-group">
                             <label for="InputEmail1">Correo electronico</label>
                             <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"
-                                placeholder="example@mail.com">
+                                placeholder="example@mail.com" required>
                             <small id="emailHelp" class="form-text text-muted">La universidad no comparte tu informacion
                                 con terceros</small>
                         </div>
                         <div class="form-group">
                             <label for="InputPassword1">Contraseña</label>
-                            <input type="password" class="form-control" id="InputPassword1" placeholder="Contraseña">
+                            <input type="password" class="form-control" id="InputPassword1" placeholder="Contraseña" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block" id="sing_in_button">Iniciar
                             sesion</button>
