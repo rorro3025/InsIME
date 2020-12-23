@@ -31,7 +31,7 @@ const setUser = (user) => {
   }
 };
 // recopilar informacion 2 tomamos correo como conexion entre BD_firestrore y BD_ususarios 
-const info = async (email) => {
+const setUserFromFiresore = async (email) => {
   var doc = await getStudent(email);
   var student = doc.data();
   local_user.name = student.Nombre;
@@ -57,9 +57,9 @@ logout.addEventListener('click', e => {
 auth.onAuthStateChanged (async (user) => {
   if (user) {
     setUser(user);
-    await info("BFhfhzXQvsHLQj6t1OQO");
+    await setUserFromFiresore("hL4UJEsIITomzuuykJva");
     console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
-    //console.log("Data_again: "+ info("BFhfhzXQvsHLQj6t1OQO"));
+    //ID Sandra("BFhfhzXQvsHLQj6t1OQO") ID Rodrigo("hL4UJEsIITomzuuykJva");
     const say_N = document.querySelector('#title_admin');
     const user_info = document.querySelector('#info_user');
     say_N.innerHTML = `Hola usuario`;
