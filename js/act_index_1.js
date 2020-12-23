@@ -4,29 +4,40 @@ console.log("Estas en la pantalla de usuario");
 //crecion de los elementos FB
 const auth = firebase.auth();
 const fs = firebase.firestore();
+const getStudent = (email) => fs.collection("students").doc(email).get();
 
 //objeto usuario 
 const local_user = {
-    name: "",
-    email: "",
-    photoUrl: "",
-    uid: "",
-    emailVerified: ""
-  };
+  name: "",
+  email: "",
+  photoUrl: "",
+  uid: "",
+  emailVerified: "",
+  career: "",
+  account_numer: ""
+};
 
 //recopilar informacion 
-  const setUser = (user) => {
-    if (user) {
-      var user_active = auth.currentUser;
-      local_user.name = user_active.displayName;
-      local_user.email = user_active.email;
-      local_user.uid = user_active.uid;
-      local_user.photoUrl = user_active.photoURL;
-      local_user.emailVerified = user_active.emailVerified;
-    } else {
-      local_user.name = "Unknowed";
-    }
-  };
+const setUser = (user) => {
+  if (user) {
+    var user_active = auth.currentUser;
+    local_user.name = user_active.displayName;
+    local_user.email = user_active.email;
+    local_user.uid = user_active.uid;
+    local_user.photoUrl = user_active.photoURL;
+    local_user.emailVerified = user_active.emailVerified;
+  } else {
+    local_user.name = "Unknowed";
+  }
+};
+// recopilar informacion 2 tomamos correo como conexion entre BD_firestrore y BD_ususarios 
+const info = async (email) => {
+  var doc = await getStudent(email);
+  var student = doc.data();
+  local_user.name = student.Nombre;
+  local_user.career = student.Carrera;
+  local_user.account_numer = student.No_cuenta;
+}
 
 // Cerrar sesion 
 const logout = document.querySelector('#logout-btn');
@@ -43,22 +54,24 @@ logout.addEventListener('click', e => {
 
 // informacion del usuario
 //Estado de usuario
-auth.onAuthStateChanged(user => {
-    if (user) {
-      setUser(user);
-      console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
-      const say_N = document.querySelector('#title_admin');
-      const user_info = document.querySelector('#info_user');
-      say_N.innerHTML = `Hola usuario`;
-      let html_value = `
-                        <li> id ${local_user.uid} </li>
-                        <li> nombre ${local_user.name} </li>
-                        <li> email ${local_user.email} </li>
-                        <li> link ${local_user.photoUrl} </li>
-                        <li> emal ver ${local_user.emailVerified} </li>
+auth.onAuthStateChanged (async (user) => {
+  if (user) {
+    setUser(user);
+    await info("BFhfhzXQvsHLQj6t1OQO");
+    console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
+    //console.log("Data_again: "+ info("BFhfhzXQvsHLQj6t1OQO"));
+    const say_N = document.querySelector('#title_admin');
+    const user_info = document.querySelector('#info_user');
+    say_N.innerHTML = `Hola usuario`;
+    let html_value = `
+                        <li> Numero de cuenta ${local_user.account_numer} </li>
+                        <li> Nombre completo ${local_user.name} </li>
+                        <li> Correo electronico ${local_user.email} </li> 
+                        <li> Carrera: ${local_user.career} </li>
+                        <li> Verifico email: ${local_user.emailVerified} </li>
                         `;
-      user_info.innerHTML = html_value;
-    } else {
-      console.log("no hay usuario activo");
-    }
-  });
+    user_info.innerHTML = html_value;
+  } else {
+    console.log("no hay usuario activo");
+  }
+});
