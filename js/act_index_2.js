@@ -1,5 +1,5 @@
 //test conexion de script 
-console.log("Estas en la pantalla inicial de administrador");
+console.log("Estas en la pantalla principal de estudiante");
 
 //crecion de los elementos FB
 const auth = firebase.auth();
@@ -12,14 +12,14 @@ const local_user = {
   photoUrl: "",
   uid: "",
   emailVerified: "",
-  career: ""
+  career: "",
+  account_numer: ""
 };
 
 //recopilar informacion 
 const setUser = (user) => {
   if (user) {
     var user_active = auth.currentUser;
-    //local_user.name = user_active.displayName;
     local_user.email = user_active.email;
     local_user.uid = user_active.uid;
     local_user.photoUrl = user_active.photoURL;
@@ -47,10 +47,12 @@ const showUserByEmail = async (email) => {
         const user_info = document.querySelector('#info_user');
         say_N.innerHTML = `Hola ${local_user.name}`;
         let html_value = `
+                        <li> Numero de cuenta ${local_user.account_numer} </li>
                         <li> Correo electronico ${local_user.email} </li> 
                         <li> Carrera: ${local_user.career} </li>
                         <li> Verifico email: ${local_user.emailVerified} </li>
-                        `;     
+                        `;
+                        //<li> Nombre completo ${local_user.name} </li>
         user_info.innerHTML = html_value;
         console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
       });

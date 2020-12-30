@@ -1,6 +1,10 @@
 //test conexion de script 
 console.log("Estas en el inicio de sesion");
 
+// colecciones de datos
+let collections = ["students","teachers","admins"];
+var collection = "";
+
 //crecion de los elementos FB
 const auth = firebase.auth();
 const fs = firebase.firestore();
@@ -16,8 +20,32 @@ sing_in.addEventListener('submit', (e) => {
   auth
     .signInWithEmailAndPassword(singin_email, singin_pass)
     .then(function () {
-      alert("Haz iniciado sesion");
-      window.location = "CRUD_1.html";
+      /* comprobacion del tipo de usuario consultando las tres colecciones de datos 
+            (students, teachers, admins) y asi determinar el tipo de usuario y la pagina donde sera redirigido*/
+            fs.collection("users").where("Correo", "==", singin_email)
+            .get()
+            .then(function (querySnapshot) {
+              querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                var user = doc.data();
+                if(user.Tipo == 1){
+                  console.log(user.Nombre + " "+ "Administrador");
+                  window.location = "menu_admin.html";
+                }else{
+                  if(user.Tipo == 2){
+                    console.log(user.Nombre + " "+ "Estudiante");
+                    window.location = "menu_student.html";
+                  }else{
+                    console.log(user.Nombre + " "+ "Profesor");
+                    window.location = "menu_teach.html";
+                  }
+                }
+                
+              });
+            })
+            .catch(function (error) {
+               
+            });
     })
     .catch(function (error) {
       // Handle Errors here.
