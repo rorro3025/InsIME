@@ -26,10 +26,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav justify-content-end ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="profesores_crud.html" aria-disabled="true">Inscripcion</a>
+                        <a class="nav-link" href="#" aria-disabled="true">Administracion de alumnos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="schedules" aria-disabled="true">Horarios</a>
+                        <a class="nav-link" href="management_teachers.html" id="schedules" aria-disabled="true">Administracion de profesores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#help-window"
@@ -91,15 +91,89 @@
     </div>
     <!--Presentacion-->
     <div class="cotainer">
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm">
-                <ul id="info_user">
 
-                </ul>
-            </div>
-            <div class="col-sm-4"></div>
-        </div>
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col offset-md-1">
+                            <div role="tabpanel">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active nav-item"><a href="#sec1" aria-controls="sec1"
+                                            data-toggle="tab" role="tab" class="nav-link active">Alta de alumno</a>
+                                    </li>
+                                    <li role="presentation" class="active nav-item"><a href="#sec2" aria-controls="sec2" data-toggle="tab"
+                                            role="tab" class="nav-link">Baja de alumno</a>
+                                    </li>
+                                    <li role="presentation" class="active nav-item"><a href="#sec3" aria-controls="sec3" data-toggle="tab"
+                                            role="tab" class="nav-link">Consulta de alumno</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade show active" id="sec1">
+                                        <h3>Llena el siguiente formulario</h3>
+                                        <form class="row g-3">
+                                            <div class="col-md-6">
+                                              <label for="inputEmail4" class="form-label">Email</label>
+                                              <input type="email" class="form-control" id="inputEmail4">
+                                            </div>
+                                            <div class="col-md-6">
+                                              <label for="inputPassword4" class="form-label">Password</label>
+                                              <input type="password" class="form-control" id="inputPassword4">
+                                            </div>
+                                            <div class="col-12">
+                                              <label for="inputAddress" class="form-label">Address</label>
+                                              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                            </div>
+                                            <div class="col-12">
+                                              <label for="inputAddress2" class="form-label">Address 2</label>
+                                              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                            </div>
+                                            <div class="col-md-6">
+                                              <label for="inputCity" class="form-label">City</label>
+                                              <input type="text" class="form-control" id="inputCity">
+                                            </div>
+                                            <div class="col-md-4">
+                                              <label for="inputState" class="form-label">State</label>
+                                              <select id="inputState" class="form-select">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                              </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                              <label for="inputZip" class="form-label">Zip</label>
+                                              <input type="text" class="form-control" id="inputZip">
+                                            </div>
+                                            <div class="col-12">
+                                              <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                <label class="form-check-label" for="gridCheck">
+                                                  Check me out
+                                                </label>
+                                              </div>
+                                            </div>
+                                            <div class="col-12">
+                                              <button type="submit" class="btn btn-primary">Sign in</button>
+                                            </div>
+                                          </form>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="sec2">
+                                        <h3>Selecciona el usuario a eliminar</h3>
+                                        <p>seccion 2</p>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="sec3">
+                                        <h3>Ingresa la información</h3>
+                                        <p>seccion 3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+        
+    </div>
+    </div>
     </div>
     <!--Espaciado discreto -->
     <div class="row">
@@ -147,6 +221,9 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
     </script>
+    <!--Scrip de jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!--Scripts de boostrap-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
