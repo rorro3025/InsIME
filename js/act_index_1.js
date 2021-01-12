@@ -1,5 +1,5 @@
 //test conexion de script 
-console.log("Estas en la pantalla inicial de administrador");
+console.log("Estas logeado como administrador");
 
 //crecion de los elementos FB
 const auth = firebase.auth();

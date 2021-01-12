@@ -26,10 +26,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav justify-content-end ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="management_students.html" aria-disabled="true">Administracion de alumnos</a>
+                        <a class="nav-link" href="management_students.html" aria-disabled="true">Administracion de
+                            alumnos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="schedules" aria-disabled="true">Administracion de profesores</a>
+                        <a class="nav-link" href="#" id="schedules" aria-disabled="true">Administracion de
+                            profesores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#help-window"
@@ -80,7 +82,7 @@
             </div>
         </div>
     </div>
-    <!--Contenido Principal-->
+    <!--Header de contenido-->
     <div class="container">
         <div class="row">
             <div class="col offset-md-1">
@@ -89,35 +91,158 @@
             </div>
         </div>
     </div>
-    <!--Presentacion-->
-    <div class="cotainer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col offset-md-1">
-                            <div role="tabpanel">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item active" role="presentation">
-                                      <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <a class="nav-link" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                                    </li>
-                                  </ul>
-                                  <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel">.3.</div>
-                                    <div class="tab-pane fade" id="profile" role="tabpanel">.2.</div>
-                                    <div class="tab-pane fade" id="contact" role="tabpanel">.1.</div>
-                                  </div>                                   
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-    </div>
-    </div>
-    </div>
+    <!--Contenido principal o acciones-->
+    <div class="container">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ciencias fisico-matematicas y de las ingenierias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Ciencias biologicas, quimicas y de la salud</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Ciencias sociales</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="contact" aria-selected="false">Humanidades y de las artes</a>
+			  </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+				<ol>
+				<li>Actuaría</li>
+				<li>Arquitectura</li>
+				<li>Arquitectura de Paisaje</li>
+				<li>Ciencia de Materiales Sustentables</li>
+				<li>Ciencias de la Computación</li>
+				<li>Ciencias de la Tierra</li>
+				<li>Diseño Industrial</li>
+				<li>Física</li>
+				<li>Física Biomédica</li>
+				<li>Geociencias</li>
+				<li>Ingeniería Ambiental</li>
+				<li>Ingeniería Civil</li>
+				<li>Ingeniería de Minas y Metalurgia</li>
+				<li>Ingeniería Eléctrica Electrónica</li>
+				<li>Ingeniería en Computación</li>
+				<li>Ingeniería en Energías Renovables</li>
+				<li>Ingeniería en Sistemas Biomédicos</li>
+				<li>Ingeniería en Telecomunicaciones</li>
+				<li>Ingeniería en Telecomunicaciones, Sistemas y Electrónica</li>
+				<li>Ingeniería Geofísica</li>
+				<li>Ingeniería Geológica</li>
+				<li>Ingeniería Geomática</li>
+				<li>Ingeniería Industrial</li>
+				<li>Ingeniería Mecánica</li>
+				<li>Ingeniería Mecánica Eléctrica</li>
+				<li>Ingeniería Mecatrónica</li>
+				<li>Ingeniería Petrolera</li>
+				<li>Ingeniería Química</li>
+				<li>Ingeniería Química Metalúrgica</li>
+				<li>Matemáticas</li>
+				<li>Matemáticas Aplicadas</li>
+				<li>Matemáticas Aplicadas y Computación</li>
+				<li>Nanotecnología</li>
+				<li>Tecnología</li>
+				<li>Tecnologías para la Información en Ciencias</li>
+				<li>Urbanismo</li>
+			</ol>
+			</div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+				<ol>
+					<li>Biología</li>
+					<li>Bioquimica Diagnostica</li>
+					<li>Ciencia Forense</li>
+					<li>Ciencias Agrogenómicas</li>
+					<li>Ciencias Ambientales</li>
+					<li>Ciencias Genómicas</li>
+					<li>Cirujano Dentista</li>
+					<li>Ecología</li>
+					<li>Enfermería</li>
+					<li>Enfermería y Obstetricia</li>
+					<li>Farmacia</li>
+					<li>Fisioterapia</li>
+					<li>Ingeniería Agrícola</li>
+					<li>Ingeniería en Alimentos</li>
+					<li>Investigación Biomédica Básica</li>
+					<li>Manejo Sustentable de Zonas Costeras</li>
+					<li>Médico Cirujano</li>
+					<li>Medicina Veterinaria y Zootecnia</li>
+					<li>Neurociencias</li>
+					<li>Nutriología</li>
+					<li>Odontología</li>
+					<li>Optometría</li>
+					<li>Órtesis y Prótesis</li>
+					<li>Psicología</li>
+					<li>Química</li>
+					<li>Química de Alimentos</li>
+					<li>Química Farmacéutico Biológica</li>
+					<li>Química Industrial</li>
+				</ol>
+			</div>
+			<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+				<ol>
+					<li>Administración</li>
+					<li>Administración Agropecuaria</li>
+					<li>Antropología</li>
+					<li>Ciencias de la Comunicación</li>
+					<li>Ciencias Políticas y Administración Pública</li>
+					<li>Comunicación</li>
+					<li>Comunicación y Periodismo</li>
+					<li>Contaduría</li>
+					<li>Derecho</li>
+					<li>Desarrollo Comunitario para el Envejecimiento</li>
+					<li>Desarrollo Territorial</li>
+					<li>Economía</li>
+					<li>Economía Industrial</li>
+					<li>Estudios Sociales y Gestión Local</li>
+					<li>Geografía</li>
+					<li>Geografía Aplicada</li>
+					<li>Informática</li>
+					<li>Negocios Internacionales</li>
+					<li>Planificación para el Desarrollo Agropecuario</li>
+					<li>Relaciones Internacionales</li>
+					<li>Sociología</li>
+					<li>Trabajo Social</li>
+				</ol>
+			</div>
+			<div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="contact-tab">
+				<ol>
+					<li>Administración de Archivos y Gestión Documental</li>
+					<li>Arte y Diseño</li>
+					<li>Artes Visuales</li>
+					<li>Bibliotecología y Estudios de la Información</li>
+					<li>Cinematografía</li>
+					<li>Desarrollo y Gestión Interculturales</li>
+					<li>Diseño Gráfico</li>
+					<li>Diseño y Comunicación Visual</li>
+					<li>Enseñanza de (Alemán) (Español) (Francés) (Inglés) (Italiano) Como Lengua Extranjera</li>
+					<li>Enseñanza de Inglés</li>
+					<li>Estudios Latinoamericanos</li>
+					<li>Etnomusicología</li>
+					<li>Filosofía</li>
+					<li>Geohistoria</li>
+					<li>Historia</li>
+					<li>Historia del Arte</li>
+					<li>Lengua y Literaturas Hispánicas</li>
+					<li>Lengua y Literaturas Modernas (Letras Alemanas, Francesas, Inglesas, Italianas o Portuguesas)</li>
+					<li>Letras Clásicas</li>
+					<li>Lingüística Aplicada</li>
+					<li>Literatura Dramática y Teatro</li>
+					<li>Literatura Intercultural</li>
+					<li>Música - Canto</li>
+					<li>Música - Composición</li>
+					<li>Música - Educación Musical</li>
+					<li>Música - Instrumentista</li>
+					<li>Música - Piano</li>
+					<li>Música y Tecnología Artística</li>
+					<li>Pedagogía</li>
+					<li>Teatro y Actuación</li>
+					<li>Traducción</li>
+				</ol>
+			</div>
+          </div>
+	</div>
     <!--Espaciado discreto -->
     <div class="row">
         <div class="col-sm-12" style="color:white;">
@@ -165,6 +290,9 @@
         firebase.analytics();
     </script>
     <!--Scrip de jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"
+        integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA=="
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!--Scripts de boostrap-->
