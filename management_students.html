@@ -29,12 +29,11 @@
                         <a class="nav-link" href="#" aria-disabled="true">Administracion de alumnos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="management_teachers.html" id="schedules"
-                            aria-disabled="true">Administracion de profesores</a>
+                        <a class="nav-link" href="#" aria-disabled="true">Administracion de Grupos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#help-window"
-                            aria-disabled="true">Ayuda</a>
+                        <a class="nav-link" href="management_teachers.html" id="schedules"
+                            aria-disabled="true">Administracion de profesores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#close-question"
@@ -43,29 +42,6 @@
                 </ul>
             </div>
         </nav>
-    </div>
-    <!--Modal ayuda-->
-    <div class="modal fade" id="help-window" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¿Necesitas ayuda?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="text-justify">​
-                        Para navegar en el sistema de inscripción de los laboratorios de IME, es muy facil, en la
-                        pestaña “Home” podrás acceder a datos importantes acerca de la UNAM, en la pestaña “Inscripción”
-                        podrás inscribirte a los laboratorios de tu semestre en la fecha y horario que se te asignaron,
-                        en la pestaña “Horarios” accederás a los horarios disponibles para cada laboratorio, con su
-                        respectiva información, al igual que podrás cerrar sesion cuando lo desees. Si necesitas mas
-                        ayuda contáctanos a nuestro correo: ingeime@comunidad.unam.mx​
-                    </p>
-                </div>
-            </div>
-        </div>
     </div>
     <!--Modal cerrar sesion-->
     <div class="modal" id="close-question" tabindex="-1">
@@ -107,7 +83,9 @@
                                     data-toggle="tab" role="tab" class="nav-link">Baja de alumno</a>
                             </li>
                         </ul>
+                        <!--contenido de las tabs-->
                         <div class="tab-content">
+                            <!--contenedor 1 de las tabs-->
                             <div role="tabpanel" class="tab-pane fade show active" id="sec1">
                                 <h3>Llena el siguiente formulario</h3>
                                 <form class="row g-3" id="form_student_create">
@@ -123,13 +101,15 @@
                                         <label for="name_form_student" class="form-label">Nombre</label>
                                         <input type="text" class="form-control" id="name_form_student" required>
                                         <label for="no_cuenta_form_student" class="form-label">Numero de cuenta</label>
-                                        <input type="text" class="form-control" id="no_cuenta_form_student" required>
+                                        <input type="number" class="form-control" id="no_cuenta_form_student" required>
                                         <label for="carrer_form_student" class="form-label">Carrera</label>
                                         <input type="text" class="form-control" id="career_form_student" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="password_2_form_student" class="form-label">Confirma tu contraseña</label>
-                                        <input type="password" class="form-control" id="password_2_form_student" required>
+                                        <label for="password_2_form_student" class="form-label">Confirma tu
+                                            contraseña</label>
+                                        <input type="password" class="form-control" id="password_2_form_student"
+                                            required>
                                     </div>
                                     <br>
                                     <div class="col-12">
@@ -137,35 +117,28 @@
                                     </div>
                                 </form>
                             </div>
+                            <!--contenedor 2 de las tabs-->
                             <div role="tabpanel" class="tab-pane fade" id="sec2">
                                 <h3>Ingresa el criterio de busqueda</h3>
                                 <form class="row g-3" id="form_student_search">
                                     <div class="col-md-6">
-                                        <label for="email_form_student" class="form-label">Correo electronico</label>
-                                        <input type="email" class="form-control" id="email_form_student" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="password_form_student" class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="password_form_student" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="name_form_student" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="name_form_student" required>
-                                        <label for="no_cuenta_form_student" class="form-label">Numero de cuenta</label>
-                                        <input type="text" class="form-control" id="no_cuenta_form_student" required>
-                                        <label for="carrer_form_student" class="form-label">Carrera</label>
-                                        <input type="text" class="form-control" id="career_form_student" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="password_2_form_student" class="form-label">Confirma tu contraseña</label>
-                                        <input type="password" class="form-control" id="password_2_form_student" required>
+                                        <label for="no_account_txtbox_student" class="form-label">Numero de
+                                            cuenta</label>
+                                        <input type="number" class="form-control" id="no_account_txtbox_student"
+                                            required>
                                     </div>
                                     <br>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary">Aceptar</button>
                                     </div>
                                 </form>
+                                <br>
+                                <br>
+                                <!--formulario de resultado-->
+                                <div class="container" id="result_student">
+                                </div>
                             </div>
+                            <!--contenedor 3 de las tabs-->
                             <div role="tabpanel" class="tab-pane fade" id="sec3">
                                 <h3>Ingresa la información</h3>
                                 <p>seccion 3</p>
