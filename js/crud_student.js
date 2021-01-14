@@ -80,6 +80,7 @@ form_student_create.addEventListener('submit', (e) => {
                 })
                     .then(function (docRef) {
                         console.log("Document written with ID: ", docRef.id);
+                        alert("Usuario: " + name + " ha sido registrado");
                         console.log("registrado");
                         form_student_create.reset();
                     })
@@ -112,15 +113,19 @@ form_student_search.addEventListener('submit', async (e) => {
     e.preventDefault();
     const no_account = document.querySelector("#no_account_txtbox_student").value;
     console.log(no_account);
-    container.innerHTML = no_account;
-    fs.collection("users").where("NumCuenta", "==", 418070695)
+    fs.collection("users").where("NumCuenta", "==", no_account)
         .get()
         .then(function (querySnapshot) {
+            var val1, val2, val3, val4;
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
                 //console.log(doc.id, " => ", doc.data());
                 var student = doc.data();
-                var id_bot = student.id;
+                var id_bot = doc.id;
+                val1 = student.Nombre;
+                val4 = student.NumCuenta;
+                val2 = student.Carrera;
+                val3 = student.Correo;
                 html_value = `
                         <form class="row g-3" id="form_student_update">
                         <div class="col-md-6"> 
@@ -133,7 +138,7 @@ form_student_search.addEventListener('submit', async (e) => {
                         </div>
                         <div class="col-md-6">
                             <label for="email_form_student_update" class="form-label">Correo electronico</label>
-                            <input type="email" class="form-control" id="email_form_student_update" required>
+                            <input type="email" class="form-control" id="email_form_student_update" disabled>
                         </div>
                         <br>
                         <div class="col-12">
@@ -144,6 +149,16 @@ form_student_search.addEventListener('submit', async (e) => {
                         `;
             });
             container.innerHTML = html_value;
+            /*const new_form = document.querySelector("#form_student_update");
+            new_form['name_form_student_update'].value = val1;*/
+            var name = document.querySelector("#name_form_student_update");
+            name.value = val1;
+            var account_number = document.querySelector("#no_cuenta_form_student_update");
+            account_number.value = val4;
+            var career = document.querySelector("#career_form_student_update");
+            career.value = val2;
+            var email = document.querySelector("#email_form_student_update");
+            email.value = val3;
         })
         .catch(function (error) {
             container.innerHTML = "NO se encontraron conincidencias";
