@@ -11,7 +11,8 @@ const local_user = {
   email: "",
   photoUrl: "",
   uid: "",
-  emailVerified: ""
+  emailVerified: "",
+  RFC: ""
 };
 
 //recopilar informacion 
@@ -38,6 +39,7 @@ const showUserByEmail = async (email) => {
         //console.log(doc.id, " => ", doc.data());
         var student = doc.data();
         local_user.name = student.Nombre;
+        local_user.RFC = student.RFC;
         console.log(local_user.name,local_user.career,local_user.account_numer);
         const say_N = document.querySelector('#title_admin');
         const user_info = document.querySelector('#info_user');
