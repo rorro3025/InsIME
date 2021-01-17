@@ -90,7 +90,7 @@
                         </div>
                         <br>
                         <button type="button" class="btn btn-secondary" style= "padding: 5px; float: left; width: 30%; margin-left: 20%; margin-bottom: 2%">Cancelar</button>
-                        <button type="button" class="btn btn-primary" style= "padding: 5px; float: left; width: 30%; margin-left: 2%; margin-bottom: 2%">Crear</button>
+                        <button type="button" class="btn btn-primary" style= "padding: 5px; float: left; width: 30%; margin-left: 2%; margin-bottom: 2%" onclick="crear()">Crear</button>
                     </form>
                 </div>
             </div>
@@ -116,6 +116,12 @@
             <p>© 2019 UNAM. Todos los derechos reservados | Facultad de Estudios Superiores Cuautitlán.</p>
         </div>
     </div>
+    <script>
+    function crear()
+        {
+           alert("Grupo creado correctamente :D");
+        }
+    </script>
     <!--Scripts de firebase-->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
