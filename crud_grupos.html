@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/designe.css">
+    <link rel="stylesheet" href="css/designe_crud.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <title>Inicio</title>
@@ -43,10 +44,6 @@
             </div>
         </nav>
     </div>
-
-    <div role="tabpanel" class="tab-pane fade show active" id="sec1">
-        <h3>Grupos de laboratorio existentes</h3>
-    </div>
     <!--Modal cerrar sesion-->
     <div class="modal" id="close-question" tabindex="-1">
         <div class="modal-dialog">
@@ -61,7 +58,78 @@
             </div>
         </div>
     </div>
-
+    <!--Contenido principal-->
+    <div class="cotainer">
+        <div class="container">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="sec1">
+                    <h3>Grupos de laboratorios existentes</h3>
+                        <label style="margin-left: 74%">
+                            Clave:
+                            <input type="text">
+                        </label>
+                        <button class="clave">Buscar</button>
+                        <table style="width: 100%">
+                            <tr>
+                                <th>Clave</th>
+                                <th>Laboratorio</th>
+                                <th>CR</th>
+                                <th>Grupo</th>
+                                <th>Aula</th>
+                                <th>Consultar</th>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Laboratorio de computo</td>
+                                <td>12</td>
+                                <td>1552</td>
+                                <td>A12-213</td>
+                                <td><button type="button" class="clave"></button></td>
+                                <td><button type="button" class="actualizar"></button></td>
+                                <td><button type="button" class="eliminar"></button></td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Laboratorio de mecanica</td>
+                                <td>10</td>
+                                <td>1552</td>
+                                <td>A12-230</td>
+                                <td><button type="button" class="clave"></button></td>
+                                <td><button type="button" class="actualizar"></button></td>
+                                <td><button type="button" class="eliminar"></button></td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Laboratorio de sistemas</td>
+                                <td>08</td>
+                                <td>1552</td>
+                                <td>A12-233</td>
+                                <td><button type="button" class="clave"></button></td>
+                                <td><button type="button" class="actualizar"></button></td>
+                                <td><button type="button" class="eliminar"></button></td>
+                            </tr>
+                            <tr>
+                                <td>09</td>
+                                <td>Laboratorio de electrica</td>
+                                <td>06</td>
+                                <td>1552</td>
+                                <td>A12-234</td>
+                                <td><button type="button" class="clave"></button></td>
+                                <td><button type="button" class="actualizar"></button></td>
+                                <td><button type="button" class="eliminar"></button></td>
+                            </tr>
+                        </table>
+                </div>
+                <div>
+                    <br>
+                    <button type="button" class="btn btn-primary" style="margin-left: 90%">Crear grupo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
 
 
 
