@@ -73,21 +73,15 @@
                 <div class="col offset-md-1">
                     <div role="tabpanel">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active nav-item"><a href="#sec1" aria-controls="sec1"
-                                    data-toggle="tab" role="tab" class="nav-link active">Alta de alumno</a>
-                            </li>
+                            
                             <li role="presentation" class="active nav-item"><a href="#sec2" aria-controls="sec2"
-                                    data-toggle="tab" role="tab" class="nav-link">Consulta de alumno</a>
-                            </li>
-                            <li role="presentation" class="active nav-item"><a href="#sec3" aria-controls="sec3"
-                                    data-toggle="tab" role="tab" class="nav-link">Baja de alumno</a>
+                                    data-toggle="tab" role="tab" class="nav-link">Consulta y actualización de alumno</a>
                             </li>
                         </ul>
                         <!--contenido de las tabs-->
                         <div class="tab-content">
                             <!--contenedor 1 de las tabs-->
-                            <div role="tabpanel" class="tab-pane fade show active" id="sec1">
-                                <h3>Llena el siguiente formulario</h3>
+                            <div role="tabpanel" class="tab-pane fade " id="sec1">
                                 <form class="row g-3" id="form_student_create">
                                     <div class="col-md-6">
                                         <label for="email_form_student" class="form-label">Correo electrónico</label>
@@ -110,15 +104,20 @@
                                             contraseña</label>
                                         <input type="password" class="form-control" id="password_2_form_student"
                                             required>
+                                            <label for="state_form_student" class="form-label">Estado</label>
+                                        <select class="form-control" id="state_form_student" required>
+                                            <option value="value1">Ingrese un estado</option>
+                                            <option value="value1">Aceptado</option>
+                                            <option value="value2">Rechazado</option>
+                                        </select>
                                     </div>
-                                    <br>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary">Aceptar</button>
                                     </div>
                                 </form>
                             </div>
                             <!--contenedor 2 de las tabs-->
-                            <div role="tabpanel" class="tab-pane fade" id="sec2">
+                            <div role="tabpanel" class="tab-pane fade show active" id="sec2">
                                 <h3>Ingresa el criterio de búsqueda</h3>
                                 <form class="row g-3" id="form_student_search">
                                     <div class="col-md-6">
@@ -127,7 +126,12 @@
                                         <input type="number" class="form-control" id="no_account_txtbox_student"
                                             required>
                                     </div>
-                                    <br>
+                                    <div class="row">
+        <div class="col-sm-12" style="color:white;">
+            <br>
+            <h1> Espaciado discreto</h1>
+        </div>
+    </div>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary">Aceptar</button>
                                     </div>
@@ -138,11 +142,7 @@
                                 <div class="container" id="result_student">
                                 </div>
                             </div>
-                            <!--contenedor 3 de las tabs-->
-                            <div role="tabpanel" class="tab-pane fade" id="sec3">
-                                <h3>Ingresa la información</h3>
-                                <p>sección 3</p>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
