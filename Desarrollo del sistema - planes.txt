@@ -14,7 +14,7 @@ el campo de "Verfificado" o "Rechazado"
 
 
 Ivan y Daniel:
-Status: En desarrollo (Front end)
+Status: completo (Front end)
 Programar desde cero
 CRUD Grupos:
 Hacerlo

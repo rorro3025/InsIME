@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Icon" href="img/logo_fesc.png">
+    <link rel="stylesheet" href="css/designe.css">
+    <link rel="stylesheet" type="text/css" href="css/designe_crud.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Actualizar Grupo</title>
+</head>
+
+<body>
+    <!--Header banner -->
+    <div class="container-fluid" style="Background-color:#003366;">
+        <p align="left"><a href="index.html"><img src="img/logounam.png" alt="UNAM" width="424" height="130" border="0"
+                    longdesc="LOGOUNAM"></a></p>
+    </div>
+    <!--Menu bar-->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav justify-content-end ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" aria-disabled="true">Administracion de alumnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" aria-disabled="true">Administracion de Grupos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="management_teachers.html" id="schedules"
+                            aria-disabled="true">Administracion de profesores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#close-question"
+                            aria-disabled="true">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--Contenido Principal-->
+    <div class="container">
+        <div class="container">
+            <div class="tab-content">
+                <div>
+                    <a href="crud_grupos.html"><button class="atras" style="float: left;"></button></a>
+                    <h3 style="text-align: center;">Actualizar grupo</h3>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cotainer">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 border rounded border-primary">
+                <div class="bd-example">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <br>
+                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%;">Clave:</div>
+                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%;">Laboratorio:</div>
+                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%">CR:</div>
+                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%">Aula:</div>
+                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%">Profesor:</div>
+                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
+                        </div>
+                        <br>
+                        <a href="crud_grupos.html"><button type="button" class="btn btn-secondary" style= "padding: 5px; float: left; width: 30%; margin-left: 20%; margin-bottom: 2%">Cancelar</button></a>
+                        <button type="button" class="btn btn-primary" style= "padding: 5px; float: left; width: 30%; margin-left: 2%; margin-bottom: 2%" onclick="actualizar()">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+    <!--Espaciado discreto -->
+    <div class="row">
+        <div class="col-sm-12" style="color:white;">
+            <br>
+            <h1> Espaciado discreto jajaja XD</h1>
+        </div>
+    </div>
+    <!--Footer con informacion-->
+    <div class="footer-top">
+        <div class="container-fluid">
+            <h3>Social</h3>
+            <img src="img/icons_2.png">
+        </div>
+    </div>
+    <div class="copy-right">
+        <div class="container">
+            <p>© 2019 UNAM. Todos los derechos reservados | Facultad de Estudios Superiores Cuautitlán.</p>
+        </div>
+    </div>
+    <script>
+    function actualizar()
+        {
+           alert("Grupo actualizado correctamente :D");
+        }
+    </script>
+    <!--Scripts de firebase-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyBitE7sLGG_46fV9dbp-rr8tYILcqHlOiU",
+            authDomain: "project-test-3bb76.firebaseapp.com",
+            databaseURL: "https://project-test-3bb76.firebaseio.com",
+            projectId: "project-test-3bb76",
+            storageBucket: "project-test-3bb76.appspot.com",
+            messagingSenderId: "971538913788",
+            appId: "1:971538913788:web:1f5c43d43362cd9a293a79",
+            measurementId: "G-BPZ1RBELGN"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <!--Scripts de boostrap-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        crossorigin="anonymous"></script>
+    <!--Scripts de boostrap-->
+    <script src="js/act_index.js"></script>
+</body>
+
+</html>

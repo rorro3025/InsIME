@@ -35,3 +35,19 @@ th, td {
 	width: 50px;
 	height: 30px;
 }
+
+.atras {
+	color: none;
+	background: url("../img/atras.png");
+	background-size: 100% 100%;
+	border: none;
+	width: 30px;
+	height: 30px;
+}
+
+.icon{
+	text-decoration: none;
+	padding: .7rem;
+	display: flex;
+	transition: all .5s;
+}
