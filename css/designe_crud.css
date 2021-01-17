@@ -44,3 +44,10 @@ th, td {
 	width: 30px;
 	height: 30px;
 }
+
+.icon{
+	text-decoration: none;
+	padding: .7rem;
+	display: flex;
+	transition: all .5s;
+}
