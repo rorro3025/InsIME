@@ -12,6 +12,7 @@ const local_user = {
   photoUrl: "",
   uid: "",
   emailVerified: "",
+  state: "",
   career: "",
   account_numer: ""
 };
@@ -24,6 +25,7 @@ const setUser = (user) => {
     local_user.uid = user_active.uid;
     local_user.photoUrl = user_active.photoURL;
     local_user.emailVerified = user_active.emailVerified;
+    local_user.state = user_active.state;
     showUserByEmail(local_user.email.toLowerCase());
   } else {
     local_user.name = "Unknowed";
@@ -42,6 +44,7 @@ const showUserByEmail = async (email) => {
         local_user.name = student.Nombre;
         local_user.career = student.Carrera;
         local_user.account_numer = student.NumCuenta;
+        local_user.state = student.Estado;
         console.log(local_user.name,local_user.career,local_user.account_numer);
         const say_N = document.querySelector('#title_admin');
         const user_info = document.querySelector('#info_user');
@@ -51,6 +54,7 @@ const showUserByEmail = async (email) => {
                         <li> Correo electronico ${local_user.email} </li> 
                         <li> Carrera: ${local_user.career} </li>
                         <li> Verifico email: ${local_user.emailVerified} </li>
+                        <li> Estado: ${local_user.state} </li>
                         `;
                         //<li> Nombre completo ${local_user.name} </li>
         user_info.innerHTML = html_value;
