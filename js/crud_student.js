@@ -12,6 +12,7 @@ const local_user = {
     photoUrl: "",
     uid: "",
     emailVerified: "",
+    state: "",
     career: ""
 };
 
@@ -24,6 +25,7 @@ const setUser = (user) => {
         local_user.uid = user_active.uid;
         local_user.photoUrl = user_active.photoURL;
         local_user.emailVerified = user_active.emailVerified;
+        local_user.state = user_active.state;
         showUserByEmail(local_user.email.toLowerCase());
     } else {
         local_user.name = "Unknowed";
@@ -42,6 +44,7 @@ const showUserByEmail = async (email) => {
                 local_user.name = student.Nombre;
                 local_user.career = student.Carrera;
                 local_user.account_numer = student.NumCuenta;
+                local_user.state = student.Estado;
                 const say_N = document.querySelector('#title_admin');
                 const user_info = document.querySelector('#info_user');
                 say_N.innerHTML = `Hola ${local_user.name}`;
@@ -66,6 +69,7 @@ form_student_create.addEventListener('submit', (e) => {
     const career = document.querySelector("#career_form_student").value;
     const password = document.querySelector("#password_form_student").value;
     const password_c = document.querySelector("#password_2_form_student").value;
+    const state = document.querySelector("#state_form_student").value;
     if (password == password_c) {
         auth
             .createUserWithEmailAndPassword(email, password)
@@ -76,6 +80,7 @@ form_student_create.addEventListener('submit', (e) => {
                     Correo: email,
                     Carrera: career,
                     NumCuenta: no_account,
+                    Estado: state,
                     Tipo: 2
                 })
                     .then(function (docRef) {
@@ -94,7 +99,7 @@ form_student_create.addEventListener('submit', (e) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 if (errorCode == 'auth/email-already-in-use') {
-                    alert('El correo ya a sido utilizado');
+                    alert('El correo ya ha sido utilizado');
                     $('#singup-window').modal('hide');
                 } else {
                     alert(errorMessage);
@@ -117,7 +122,7 @@ form_student_search.addEventListener('submit', async (e) => {
     fs.collection("users").where("NumCuenta", "==", no_account)
         .get()
         .then(function (querySnapshot) {
-            var val1, val2, val3, val4;
+            var val1, val2, val3, val4, val5;
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
                 //console.log(doc.id, " => ", doc.data());
@@ -127,6 +132,7 @@ form_student_search.addEventListener('submit', async (e) => {
                 val4 = student.NumCuenta;
                 val2 = student.Carrera;
                 val3 = student.Correo;
+                val5 = student.Estado;
                 html_value = `
                         <form class="row g-3" id="form_student_update">
                         <div class="col-md-6"> 
@@ -140,11 +146,22 @@ form_student_search.addEventListener('submit', async (e) => {
                         <div class="col-md-6">
                             <label for="email_form_student_update" class="form-label">Correo electronico</label>
                             <input type="email" class="form-control" id="email_form_student_update" disabled>
+                            <label for="state_form_student_update" class="form-label">Estado</label>
+                            <input type="text" class="form-control" id="state_form_student_update" disabled>
+                            <br>
+                            <select class="form-control" id="state_form_student_update" required>
+                                <option value="value1">Ingrese un estado</option>
+                                <option value="value2">Aceptado</option>
+                                <option value="value3">Rechazado</option>
+                            </select>
                         </div>
-                        <br>
+                        <div class="row">
+                            <div class="col-sm-12" style="color:white;">
+                                <h6> Espaciado discreto</h6>
+                            </div>
+                        </div>
                         <div class="col-12">
-                        <button class="btn btn-primary borrar_bot" data-id="${id_bot}">Eliminar</button>
-                        <button class="btn btn-secondary update_bot" data-id="${id_bot}">Editar</button>
+                        <button class="btn btn-primary update_bot" data-id="${id_bot}">Actualizar</button>
                         </div>
                     </form>
                         `;
@@ -160,6 +177,8 @@ form_student_search.addEventListener('submit', async (e) => {
             career.value = val2;
             var email = document.querySelector("#email_form_student_update");
             email.value = val3;
+            var state = document.querySelector("#state_form_student_update");
+            state.value = val5;
         })
         .catch(function (error) {
             container.innerHTML = "NO se encontraron conincidencias";
