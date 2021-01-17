@@ -1,0 +1,40 @@
+Rodrigo e Ian:
+Status: En desarrollo
+Login:
+
+Agregar menú: Registrar, de este da "Alumno" y "Profesor"
+
+*Usar los CRUD (Crear) de los que tenía el admin
+
+Admin:
+CRUD profes y alumnos:
+ELIMINAR: Crear, eliminar
+Usar el de consulta para en este mismo actualizar los datos, agregando 
+el campo de "Verfificado" o "Rechazado"
+
+
+Ivan y Daniel:
+Status: En desarrollo (Front end)
+Programar desde cero
+CRUD Grupos:
+Hacerlo
+
+
+Pendiente de hablar:
+Profesores: Consultar sus grupos y los alumnos de estos
+Alumnos: Consultar horarios e inscripción
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
