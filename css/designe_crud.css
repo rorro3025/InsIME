@@ -1,0 +1,37 @@
+table, th, td {
+
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center
+}
+
+th, td {
+	padding: 10px;
+}
+
+.clave {
+	color: none;
+	background: url("../img/buscar.png");
+	background-size: 100% 100%;
+	border: none;
+	width: 50px;
+	height: 30px;
+}
+
+.actualizar {
+	color: none;
+	background: url("../img/actualizar.png");
+	background-size: 100% 100%;
+	border: none;
+	width: 50px;
+	height: 30px;
+}
+
+.eliminar {
+	color: none;
+	background: url("../img/eliminar.png");
+	background-size: 100% 100%;
+	border: none;
+	width: 50px;
+	height: 30px;
+}
