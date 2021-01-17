@@ -2,7 +2,7 @@ Rodrigo e Ian:
 Status: En desarrollo
 Login:
 
-Agregar menú: Registrar, de este da "Alumno" y "Profesor"
+Agregar menú: Registrar, de este da "Alumno" y "Profesor" // listo
 
 *Usar los CRUD (Crear) de los que tenía el admin
 

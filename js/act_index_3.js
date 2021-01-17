@@ -43,8 +43,10 @@ const showUserByEmail = async (email) => {
         const user_info = document.querySelector('#info_user');
         say_N.innerHTML = `Hola ${local_user.name}`;
         let html_value = `
-                        <li> Correo electronico ${local_user.email} </li> 
-                        <li> Verifico email: ${local_user.emailVerified} </li>
+                        <li class="list-group-item list-group-item-action">
+                        <h5>Correo electronico: ${local_user.email}</h5>
+                        <p>RFC: ${local_user.RFC}</p>
+                        <p>Verifico email: ${local_user.emailVerified} </p>
                         `;
         user_info.innerHTML = html_value;
         console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);

@@ -48,8 +48,8 @@ const showUserByEmail = async (email) => {
         say_N.innerHTML = `Hola ${local_user.name}`;
         let html_value = `
                         <li class="list-group-item list-group-item-action">
-                        <h5>${local_user.email}</h5>
-                        <p>${local_user.career}</p>
+                        <h5>Correo electronico: ${local_user.email}</h5>
+                        <p>Carrera: ${local_user.career}</p>
                         <p>Verifico email: ${local_user.emailVerified} </p>
                         `;     
         user_info.innerHTML = html_value;

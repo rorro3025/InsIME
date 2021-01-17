@@ -45,18 +45,16 @@ const showUserByEmail = async (email) => {
         local_user.career = student.Carrera;
         local_user.account_numer = student.NumCuenta;
         local_user.state = student.Estado;
-        console.log(local_user.name,local_user.career,local_user.account_numer);
+        console.log(local_user.name, local_user.career, local_user.account_numer);
         const say_N = document.querySelector('#title_admin');
         const user_info = document.querySelector('#info_user');
         say_N.innerHTML = `Hola ${local_user.name}`;
-        let html_value = `
-                        <li> Numero de cuenta ${local_user.account_numer} </li>
-                        <li> Correo electronico ${local_user.email} </li> 
-                        <li> Carrera: ${local_user.career} </li>
-                        <li> Verifico email: ${local_user.emailVerified} </li>
-                        <li> Estado: ${local_user.state} </li>
-                        `;
-                        //<li> Nombre completo ${local_user.name} </li>
+        let html_value = `<li class="list-group-item list-group-item-action>
+                <h5>Correo electronico: ${local_user.email}</h5>
+                <p>Carrera: ${local_user.career}</p>
+                <p>Numero de cuenta: ${local_user.account_numer}</p>
+                <p>Verifico email: ${local_user.emailVerified} </p>
+                                `;
         user_info.innerHTML = html_value;
         console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
       });
