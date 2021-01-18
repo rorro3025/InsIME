@@ -51,6 +51,7 @@ const showUserByEmail = async (email) => {
                         <h5>Correo electronico: ${local_user.email}</h5>
                         <p>Carrera: ${local_user.career}</p>
                         <p>Verifico email: ${local_user.emailVerified} </p>
+                        </li>
                         `;     
         user_info.innerHTML = html_value;
         console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);

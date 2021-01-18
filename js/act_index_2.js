@@ -25,7 +25,7 @@ const setUser = (user) => {
     local_user.uid = user_active.uid;
     local_user.photoUrl = user_active.photoURL;
     local_user.emailVerified = user_active.emailVerified;
-    local_user.state = user_active.state;
+    
     showUserByEmail(local_user.email.toLowerCase());
   } else {
     local_user.name = "Unknowed";
@@ -49,12 +49,14 @@ const showUserByEmail = async (email) => {
         const say_N = document.querySelector('#title_admin');
         const user_info = document.querySelector('#info_user');
         say_N.innerHTML = `Hola ${local_user.name}`;
-        let html_value = `<li class="list-group-item list-group-item-action>
-                <h5>Correo electronico: ${local_user.email}</h5>
-                <p>Carrera: ${local_user.career}</p>
-                <p>Numero de cuenta: ${local_user.account_numer}</p>
-                <p>Verifico email: ${local_user.emailVerified} </p>
-                                `;
+        let html_value = `
+                        <li class="list-group-item list-group-item-action">
+                        <h5>Correo electronico: ${local_user.email}</h5>
+                        <p>Carrera: ${local_user.career}</p>
+                        <p>Numero de cuenta: ${local_user.account_numer}</p>
+                        <p>Verifico email: ${local_user.emailVerified} </p>
+                        </li>
+                        `;  
         user_info.innerHTML = html_value;
         console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
       });

@@ -3,7 +3,7 @@ console.log("CRUD ALUMNOS");
 //crecion de los elementos FB
 const fs = firebase.firestore();
 const auth = firebase.auth();
-
+var id_goblal = "";
 //Informacion de usuario activo
 
 const local_user = {
@@ -46,7 +46,6 @@ const showUserByEmail = async (email) => {
                 local_user.account_numer = student.NumCuenta;
                 local_user.state = student.Estado;
                 const say_N = document.querySelector('#title_admin');
-                const user_info = document.querySelector('#info_user');
                 say_N.innerHTML = `Hola ${local_user.name}`;
                 console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
             });
@@ -55,6 +54,8 @@ const showUserByEmail = async (email) => {
             console.log("Error getting documents xD: ", error);
         });
 }
+//Actualizacion de usuario (Alumno)
+const updateStudent = (id, student_up) => fs.collection("users").doc(id).update(student_up);
 
 /*Alta de un estudiante primero intentando el registro de 
 un usuario y luego manando la informacion del formulario a la DB de firestore*/
@@ -69,7 +70,6 @@ form_student_create.addEventListener('submit', (e) => {
     const career = document.querySelector("#career_form_student").value;
     const password = document.querySelector("#password_form_student").value;
     const password_c = document.querySelector("#password_2_form_student").value;
-    const state = document.querySelector("#state_form_student").value;
     if (password == password_c) {
         auth
             .createUserWithEmailAndPassword(email, password)
@@ -80,7 +80,6 @@ form_student_create.addEventListener('submit', (e) => {
                     Correo: email,
                     Carrera: career,
                     NumCuenta: no_account,
-                    Estado: state,
                     Tipo: 2
                 })
                     .then(function (docRef) {
@@ -88,7 +87,7 @@ form_student_create.addEventListener('submit', (e) => {
                         alert("Usuario: " + name + " ha sido registrado");
                         console.log("registrado");
                         form_student_create.reset();
-                        window.location="menu_student.html";
+                        window.location = "menu_student.html";
                     })
                     .catch(function (error) {
                         console.error("Error adding document: ", error);
@@ -100,10 +99,8 @@ form_student_create.addEventListener('submit', (e) => {
                 var errorMessage = error.message;
                 if (errorCode == 'auth/email-already-in-use') {
                     alert('El correo ya ha sido utilizado');
-                    $('#singup-window').modal('hide');
                 } else {
                     alert(errorMessage);
-                    $('#singup-window').modal('hide');
                 }
                 console.log(error);
             });
@@ -128,6 +125,7 @@ form_student_search.addEventListener('submit', async (e) => {
                 //console.log(doc.id, " => ", doc.data());
                 var student = doc.data();
                 var id_bot = doc.id;
+                id_goblal = id_bot;
                 val1 = student.Nombre;
                 val4 = student.NumCuenta;
                 val2 = student.Carrera;
@@ -150,7 +148,7 @@ form_student_search.addEventListener('submit', async (e) => {
                             <input type="text" class="form-control" id="state_form_student_update" disabled>
                             <br>
                             <select class="form-control" id="state_form_student_update" required>
-                                <option value="value1">Ingrese un estado</option>
+                                <option value="value1" selected disabled>Ingrese un estado</option>
                                 <option value="value2">Aceptado</option>
                                 <option value="value3">Rechazado</option>
                             </select>
@@ -161,7 +159,7 @@ form_student_search.addEventListener('submit', async (e) => {
                             </div>
                         </div>
                         <div class="col-12">
-                        <button class="btn btn-primary update_bot" data-id="${id_bot}">Actualizar</button>
+                        <button id="" class="btn btn-primary update_bot" data-id="${id_bot}">Actualizar</button>
                         </div>
                     </form>
                         `;
@@ -179,6 +177,26 @@ form_student_search.addEventListener('submit', async (e) => {
             email.value = val3;
             var state = document.querySelector("#state_form_student_update");
             state.value = val5;
+            // actualizar estudiante
+            var form_update = document.querySelector("#form_student_update");
+            form_update.addEventListener('submit', async e => {
+                e.preventDefault();
+                var name = document.querySelector("#name_form_student_update");
+                var account_number = document.querySelector("#no_cuenta_form_student_update");
+                var career = document.querySelector("#career_form_student_update");
+                var email = document.querySelector("#email_form_student_update");
+                var state = document.querySelector("#state_form_student_update");
+                await updateStudent(id_goblal, {
+                    Nombre: name.value,
+                    NumCuenta: account_number.value,
+                    Carrera: career.value,
+                    Correo: email.value,
+                    Estado: state.value
+                });
+                alert(name.value +" ha sido actualizado "+state.value);
+                form_update.reset();
+                id_goblal=null;
+            });
         })
         .catch(function (error) {
             container.innerHTML = "NO se encontraron conincidencias";
