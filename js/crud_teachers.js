@@ -60,7 +60,7 @@ const showUserByEmail = async (email) => {
 }
 
 //variable del formulario 
-const f_t_create = document.querySelector("#form_teachers_create");
+const f_t_create = document.querySelector("#form_teacher_create");
 //agregar escuha al evento submit 
 
 f_t_create.addEventListener('submit', (e) =>{
@@ -77,7 +77,7 @@ f_t_create.addEventListener('submit', (e) =>{
             .then(userCredencial => {
                 fs.collection("users").add({
                     Nombre: name,
-                    Correo: email,
+                    Correo: email.toLowerCase(),
                     RFC: rfc,
                     //Estado: state,
                     Tipo: 3

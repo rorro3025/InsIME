@@ -22,7 +22,7 @@ sing_in.addEventListener('submit', (e) => {
     .then(function () {
       /* comprobacion del tipo de usuario consultando las tres colecciones de datos 
             (students, teachers, admins) y asi determinar el tipo de usuario y la pagina donde sera redirigido*/
-            fs.collection("users").where("Correo", "==", singin_email)
+            fs.collection("users").where("Correo", "==", singin_email.toLowerCase())
             .get()
             .then(function (querySnapshot) {
               querySnapshot.forEach(function (doc) {
