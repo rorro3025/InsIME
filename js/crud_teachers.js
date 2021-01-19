@@ -11,6 +11,8 @@ const local_user = {
     photoUrl: "",
     uid: "",
     emailVerified: "",
+    rfc: "",
+
     state: "",
     career: ""
 };
@@ -28,6 +30,7 @@ const setUser = (user) => {
         local_user.photoUrl = user_active.photoURL;
         local_user.emailVerified = user_active.emailVerified;
         local_user.state = user_active.state;
+        local_user.rfc = user_active.rfc;
         showUserByEmail(local_user.email.toLowerCase());
     } else {
         local_user.name = "Unknowed";
@@ -42,11 +45,10 @@ const showUserByEmail = async (email) => {
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
                 //console.log(doc.id, " => ", doc.data());
-                var student = doc.data();
-                local_user.name = student.Nombre;
-                local_user.career = student.Carrera;
-                local_user.account_numer = student.NumCuenta;
-                local_user.state = student.Estado;
+                var teacher = doc.data();
+                local_user.name = teacher.Nombre;
+                local_user.state = teacher.Estado;
+                local_user.rfc = teacher.RFC;
                 const say_N = document.querySelector('#title_admin');
                 say_N.innerHTML = `Hola ${local_user.name}`;
                 console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
@@ -129,26 +131,16 @@ form_teach_search.addEventListener('submit', async (e) => {
                 val2 = teach.RFC;
                 val3 = teach.Correo;
                 html_value = `
-                        <form class="row g-3" id="form_student_update">
+                        <form class="row g-3" id="form_teacher_update">
                         <div class="col-md-6"> 
-                            <label for="name_form_student_update" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="name_form_student_update" required>
-                            <label for="no_cuenta_form_student_update" class="form-label">Numero de cuenta</label>
-                            <input type="number" class="form-control" id="no_cuenta_form_student_update" required>
-                            <label for="carrer_form_student_update" class="form-label">Carrera</label>
-                            <input type="text" class="form-control" id="career_form_student_update" required>
+                            <label for="name_form_teacher_update" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="name_form_teacher_update" required>
+                            <label for="rfc_form_teacher_update" class="form-label">RFC</label>
+                            <input type="text" class="form-control" id="rfc_form_teacher_update" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="email_form_student_update" class="form-label">Correo electronico</label>
-                            <input type="email" class="form-control" id="email_form_student_update" disabled>
-                            <label for="state_form_student_update" class="form-label">Estado</label>
-                            <input type="text" class="form-control" id="state_form_student_update" disabled>
-                            <br>
-                            <select class="form-control" id="state_form_student_update" required>
-                                <option value="value1" selected disabled>Ingrese un estado</option>
-                                <option value="value2">Aceptado</option>
-                                <option value="value3">Rechazado</option>
-                            </select>
+                            <label for="email_form_teacher_update" class="form-label">Correo electronico</label>
+                            <input type="email" class="form-control" id="email_form_teacher_update" disabled>
                         </div>
                         <div class="row">
                             <div class="col-sm-12" style="color:white;">
@@ -162,38 +154,30 @@ form_teach_search.addEventListener('submit', async (e) => {
                         `;
             });
             container.innerHTML = html_value;
-            /*const new_form = document.querySelector("#form_student_update");
-            new_form['name_form_student_update'].value = val1;
-            var name = document.querySelector("#name_form_student_update");
+            /*const new_form = document.querySelector("#form_teacher_update");
+            new_form['name_form_teacher_update'].value = val1;*/
+            var name = document.querySelector("#name_form_teacher_update");
             name.value = val1;
-            var account_number = document.querySelector("#no_cuenta_form_student_update");
-            account_number.value = val4;
-            var career = document.querySelector("#career_form_student_update");
-            career.value = val2;
-            var email = document.querySelector("#email_form_student_update");
+            var rfc = document.querySelector("#rfc_form_teacher_update");
+            rfc.value = val2;
+            var email = document.querySelector("#email_form_teacher_update");
             email.value = val3;
-            var state = document.querySelector("#state_form_student_update");
-            state.value = val5;
-            // actualizar estudiante
-            var form_update = document.querySelector("#form_student_update");
+            // actualizar profesor
+            var form_update = document.querySelector("#form_teacher_update");
             form_update.addEventListener('submit', async e => {
                 e.preventDefault();
-                var name = document.querySelector("#name_form_student_update");
-                var account_number = document.querySelector("#no_cuenta_form_student_update");
-                var career = document.querySelector("#career_form_student_update");
-                var email = document.querySelector("#email_form_student_update");
-                var state = document.querySelector("#state_form_student_update");
-                await updateStudent(id_goblal, {
+                var name = document.querySelector("#name_form_teacher_update");
+                var rfc = document.querySelector("#rfc_form_teacher_update");
+                var email = document.querySelector("#email_form_teacher_update");
+                await updateProfessor(id_goblal, {
                     Nombre: name.value,
-                    NumCuenta: account_number.value,
-                    Carrera: career.value,
-                    Correo: email.value,
-                    Estado: state.value
+                    RFC: rfc.value,
+                    Correo: email.value
                 });
-                alert(name.value +" ha sido actualizado "+state.value);
+                alert(name.value +" ha sido actualizado ");
                 form_update.reset();
                 id_goblal=null;
-            });*/
+            });
         })
         .catch(function (error) {
             container.innerHTML = "NO se encontraron conincidencias";
