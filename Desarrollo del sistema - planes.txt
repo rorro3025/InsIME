@@ -1,5 +1,5 @@
 Rodrigo e Ian:
-Status: En desarrollo
+Status: Completado
 Login:
 
 Agregar menú: Registrar, de este da "Alumno" y "Profesor" // listo
@@ -20,7 +20,7 @@ CRUD Grupos:
 Hacerlo
 
 
-Pendiente de hablar:
+Pendiente de hablar y hacer:
 Profesores: Consultar sus grupos y los alumnos de estos
 Alumnos: Consultar horarios e inscripción
 
