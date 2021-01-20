@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav justify-content-end ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" aria-disabled="true">Administracion de alumnos</a>
+                        <a class="nav-link" href="management_students.html" aria-disabled="true">Administracion de alumnos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="crud_grupos.html" aria-disabled="true">Administracion de Grupos</a>
@@ -44,6 +44,20 @@
                 </ul>
             </div>
         </nav>
+    </div>
+    <!--Modal cerrar sesion-->
+    <div class="modal" id="close-question" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    ¿Quieres cerrar sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
+                    <button type="button" class="btn btn-primary" id="logout-btn">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
     </div>
     <!--Contenido Principal-->
     <div class="container">
