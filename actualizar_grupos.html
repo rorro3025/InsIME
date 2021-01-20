@@ -28,10 +28,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav justify-content-end ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" aria-disabled="true">Administracion de alumnos</a>
+                        <a class="nav-link" href="management_students.html" aria-disabled="true">Administracion de alumnos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" aria-disabled="true">Administracion de Grupos</a>
+                        <a class="nav-link" href="crud_grupos.html" aria-disabled="true">Administracion de Grupos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="management_teachers.html" id="schedules"
@@ -45,6 +45,20 @@
             </div>
         </nav>
     </div>
+    <!--Modal cerrar sesion-->
+    <div class="modal" id="close-question" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    ¿Quieres cerrar sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
+                    <button type="button" class="btn btn-primary" id="logout-btn">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--Contenido Principal-->
     <div class="container">
         <div class="container">
@@ -57,50 +71,96 @@
             </div>
         </div>
     </div>
+    <div>
+        <div>
+            <div>
+                <div style= "padding: 5px; float: left; margin-left: 10%;">Aula:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 100px; float: left;" value="A2-1005"></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Clave:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value="01"></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Creditos:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value="10"></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Cupo:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value="20"></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Cupo restante:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value="20"></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Grupo:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 50px; float: left;" value="1151"></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Nombre:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 130px;" value="Termodinamica"></input>
+            </div>
+            <br>
+            <div>
+                <div style= "padding: 5px; margin-left: 36%; float: left;">Nombre del Profesor:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 260px;" value="Juan Miguel Martinez Maldonado"></input>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
     <div class="cotainer">
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4 border rounded border-primary">
-                <div class="bd-example">
-                    <form id="login-form">
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%;">Clave:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%;">Laboratorio:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%">CR:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%">Aula:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%">Profesor:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <br>
-                        <a href="crud_grupos.html"><button type="button" class="btn btn-secondary" style= "padding: 5px; float: left; width: 30%; margin-left: 20%; margin-bottom: 2%">Cancelar</button></a>
-                        <button type="button" class="btn btn-primary" style= "padding: 5px; float: left; width: 30%; margin-left: 2%; margin-bottom: 2%" onclick="actualizar()">Actualizar</button>
-                    </form>
+        <div class="container">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="sec1">
+                        <table style="width: 100%">
+                            <tr>
+                                <th>Lunes</th>
+                                <th>Martes</th>
+                                <th>Miercoles</th>
+                                <th>Jueves</th>
+                                <th>Viernes</th>
+                                <th>Sabado</th>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Laboratorio de computo</td>
+                                <td>12</td>
+                                <td>1552</td>
+                                <td>A12-213</td>
+                                <td>Juan Miguel Martínez Maldonado</td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Laboratorio de mecanica</td>
+                                <td>10</td>
+                                <td>1552</td>
+                                <td>A12-230</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Laboratorio de sistemas</td>
+                                <td>08</td>
+                                <td>1552</td>
+                                <td>A12-233</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>09</td>
+                                <td>Laboratorio de electrica</td>
+                                <td>06</td>
+                                <td>1552</td>
+                                <td>A12-234</td>
+                                <td></td>
+                            </tr>
+                        </table>
                 </div>
             </div>
-            <div class="col-sm-4"></div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <br>
+                    <a href="#"><button type="button" class="btn btn-primary" style="margin-left: 80.6%" onclick="actualizar()">Actualizar grupo</button></a>
+                </div>
+            </div>
         </div>
     </div>
     <!--Espaciado discreto -->
     <div class="row">
         <div class="col-sm-12" style="color:white;">
-            <br>
             <h1> Espaciado discreto jajaja XD</h1>
         </div>
     </div>
