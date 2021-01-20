@@ -60,8 +60,8 @@ const showUserByEmail = async (email) => {
 //Actualizacion de usuario (Alumno)
 const updateGroup = (id, group_up) => fs.collection("users").doc(id).update(group_up);
 
-/*Alta de un estudiante primero intentando el registro de 
-un usuario y luego manando la informacion del formulario a la DB de firestore*/
+/*Alta de un grupo primero intentando el registro de 
+un grupo y luego manando la informacion del formulario a la DB de firestore*/
 
 const form_group_create = document.querySelector("#form_group_create");
 
@@ -91,38 +91,42 @@ form_group_create.addEventListener('submit', (e) => {
                 })
                     .then(function (docRef) {
                         console.log("Document written with ID: ", docRef.id);
-                        alert("Usuario: " + name + " ha sido registrado");
+                        alert("Grupo: " + name + " ha sido registrado");
                         console.log("registrado");
-                        form_student_create.reset();
-                        window.location = "menu_student.html";
+                        form_group_create.reset();
                     })
                     .catch(function (error) {
                         console.error("Error adding document: ", error);
                     });
 });
-// busqueda de usuario (alumnos) con numero de cuenta
-const form_student_search = document.querySelector("#form_student_search");
-var container = document.querySelector("#result_student");
+// busqueda de grupo con clave
+const form_group_search = document.querySelector("#form_group_search");
+var container = document.querySelector("#result_group");
 var html_value = "undefineed DX";
-form_student_search.addEventListener('submit', async (e) => {
+form_group_search.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const no_account = document.querySelector("#no_account_txtbox_student").value;
-    console.log(no_account);
-    fs.collection("users").where("NumCuenta", "==", no_account)
+    const key = document.querySelector("#key_txtbox_group").value;
+    console.log(key);
+    fs.collection("groups").where("Clave", "==", key)
         .get()
         .then(function (querySnapshot) {
-            var val1, val2, val3, val4, val5;
+            var val1, val2, val3, val4, val5, val6, val7, val8, val9;
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
                 //console.log(doc.id, " => ", doc.data());
-                var student = doc.data();
+                var group = doc.data();
                 var id_bot = doc.id;
                 id_goblal = id_bot;
-                val1 = student.Nombre;
-                val4 = student.NumCuenta;
-                val2 = student.Carrera;
-                val3 = student.Correo;
-                val5 = student.Estado;
+                val1 = group.classroom;
+                val2 = group.key;
+                val3 = group.credits;
+                val4 = group.quota;
+                val5 = group.reamining_quota;
+                vaL6 = group.no_group;
+                val7 = group.name;
+                val8 = group.id_teacher;
+                val9 = group.teacher_name;
+                /* A PARTIR DE AQUÍ, NO SE AH MODIFICADO CON RESPECTO A LOS GRUPOS (DISEÑO, PASAR DATOS, ETC) */
                 html_value = `
                         <form class="row g-3" id="form_student_update">
                         <div class="col-md-6"> 
