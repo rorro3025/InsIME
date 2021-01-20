@@ -31,7 +31,7 @@
                         <a class="nav-link" href="#" aria-disabled="true">Administracion de alumnos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" aria-disabled="true">Administracion de Grupos</a>
+                        <a class="nav-link" href="crud_grupos.html" aria-disabled="true">Administracion de Grupos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="management_teachers.html" id="schedules"
@@ -57,50 +57,97 @@
             </div>
         </div>
     </div>
-    <div class="cotainer">
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4 border rounded border-primary">
-                <div class="bd-example">
-                    <form id="login-form">
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%;">Clave:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%;">Laboratorio:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%">CR:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%">Aula:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <div class="form-group">
-                            <br>
-                            <div style= "padding: 5px; float: left; width: 30%; margin-left: 10%">Profesor:</div>
-                            <input type="text" style= "padding: 5px; float: left; width: 50%; height: 30px; text-align: justify;"></input>
-                        </div>
-                        <br>
-                        <a href="crud_grupos.html"><button type="button" class="btn btn-secondary" style= "padding: 5px; float: left; width: 30%; margin-left: 20%; margin-bottom: 2%">Cancelar</button></a>
-                        <button type="button" class="btn btn-primary" style= "padding: 5px; float: left; width: 30%; margin-left: 2%; margin-bottom: 2%" onclick="crear()">Crear</button>
-                    </form>
-                </div>
+    <div>
+        <div>
+            <div>
+                <div style= "padding: 5px; float: left; margin-left: 10%;">Aula:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 100px; float: left;" value=""></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Clave:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Creditos:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Cupo:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Cupo restante:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Grupo:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 50px; float: left;" value=""></input>
+                <div style= "padding: 5px; float: left; margin-left: 2%;">Nombre:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 130px;" value=""></input>
             </div>
-            <div class="col-sm-4"></div>
+            <br>
+            <div>
+                <div style= "padding: 5px; margin-left: 36%; float: left;">Nombre del Profesor:</div>
+                <input type="text" style= "padding: 5px; height: 30px; width: 260px;" value=""></input>
+            </div>
         </div>
     </div>
+    <br>
+    <br>
+    <div class="cotainer">
+        <div class="container">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="sec1">
+                        <table style="width: 100%">
+                            <tr>
+                                <th>Lunes</th>
+                                <th>Martes</th>
+                                <th>Miercoles</th>
+                                <th>Jueves</th>
+                                <th>Viernes</th>
+                                <th>Sabado</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <br>
+                    <a href="crear_grupo.html"><button type="button" class="btn btn-primary" style="margin-left: 83%" onclick="crear()">Crear grupo</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--Espaciado discreto -->
     <div class="row">
         <div class="col-sm-12" style="color:white;">
-            <br>
             <h1> Espaciado discreto jajaja XD</h1>
         </div>
     </div>
