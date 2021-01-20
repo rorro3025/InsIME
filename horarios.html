@@ -28,14 +28,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav justify-content-end ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="management_students.html" aria-disabled="true">Administracion de alumnos</a>
+                        <a class="nav-link" href="management_students.html" aria-disabled="true">Inscripcion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" aria-disabled="true">Administracion de Grupos</a>
+                        <a class="nav-link" href="#" aria-disabled="true">Horarios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="management_teachers.html" id="schedules"
-                            aria-disabled="true">Administracion de profesores</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#help-window"
+                            aria-disabled="true">Ayuda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#close-question"
@@ -44,6 +44,29 @@
                 </ul>
             </div>
         </nav>
+    </div>
+    <!--Modal ayuda-->
+    <div class="modal fade" id="help-window" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¿Necesitas ayuda?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-justify">​
+                        Para navegar en el sistema de inscripción de los laboratorios de IME, es muy facil, en la
+                        pestaña “Home” podrás acceder a datos importantes acerca de la UNAM, en la pestaña “Inscripción”
+                        podrás inscribirte a los laboratorios de tu semestre en la fecha y horario que se te asignaron,
+                        en la pestaña “Horarios” accederás a los horarios disponibles para cada laboratorio, con su
+                        respectiva información, al igual que podrás cerrar sesion cuando lo desees. Si necesitas mas
+                        ayuda contáctanos a nuestro correo: ingeime@comunidad.unam.mx​
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     <!--Modal cerrar sesion-->
     <div class="modal" id="close-question" tabindex="-1">
@@ -64,12 +87,8 @@
         <div class="container">
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade show active" id="sec1">
-                    <h3>Haz clic en un laboratorio para visualizar las inscripciones de los alumnos</h3>
-                        <label style="margin-left: 74%">
-                            Clave:
-                            <input type="text">
-                        </label>
-                        <button class="clave">Buscar</button>
+                    <h3 style="text-align: center;">Horarios</h3>
+                        <br>
                         <table style="width: 100%">
                             <tr>
                                 <th>Clave</th>
@@ -144,7 +163,7 @@
                         </table>
                         <br>
                         <div style= "float: left;">Para mas comodidad, puedes descargar el PDF de los horarios de laboratorios:</div>
-                        <a href="#" style= "padding: 10px; float: left;" class="pdf">Horarios</a>
+                        <a href="#" style= "padding: 10px; float: left;" class="pdf"></a>
                 </div>
             </div>
         </div>
