@@ -77,7 +77,7 @@ form_student_create.addEventListener('submit', (e) => {
 
                 fs.collection("users").add({
                     Nombre: name,
-                    Correo: email,
+                    Correo: email.toLowerCase(),
                     Carrera: career,
                     NumCuenta: no_account,
                     Tipo: 2
