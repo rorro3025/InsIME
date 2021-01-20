@@ -61,3 +61,16 @@ sing_in.addEventListener('submit', (e) => {
       console.log(error);
     });
 });
+
+// Cerrar sesion 
+const logout = document.querySelector('#logout-btn');
+logout.addEventListener('click', e => {
+  e.preventDefault();
+  auth
+    .signOut()
+    .then(() => {
+      console.log("Cerraste sesion");
+      $('#close-question').modal('hide');
+      window.location = "index.html";
+    });
+});
