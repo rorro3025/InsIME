@@ -10,11 +10,10 @@ th, td {
 }
 
 .clave {
-	color: none;
 	background: url("../img/buscar.png");
 	background-size: 100% 100%;
 	border: none;
-	width: 50px;
+	width: 55px;
 	height: 30px;
 }
 
@@ -42,6 +41,12 @@ th, td {
 	background-size: 100% 100%;
 	border: none;
 	width: 30px;
+	height: 30px;
+}
+
+.pdf {
+	background: #ffffff;
+	width: 80px;
 	height: 30px;
 }
 
