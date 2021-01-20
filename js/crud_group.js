@@ -6,7 +6,7 @@ const auth = firebase.auth();
 var id_goblal = "";
 //Informacion de usuario activo
 
-const local_user = {
+const local_group = {
     classroom: "",
     key: "",
     credits: "",
@@ -23,19 +23,25 @@ const local_user = {
 const setGroup = (group) => {
     if (group) {
         var group_active = auth.currentUser;
-        //local_user.name = user_active.displayName;
-        local_user.email = user_active.email;
-        local_user.uid = user_active.uid;
-        local_user.photoUrl = user_active.photoURL;
-        local_user.emailVerified = user_active.emailVerified;
-        local_user.state = user_active.state;
-        showUserByEmail(local_user.email.toLowerCase());
+        //local_group.name = group_active.displayName;
+        local_group.classroom = group_active.classroom;
+        local_group.key = group_active.key;
+        local_group.credits = group_active.credits;
+        local_group.quota = group_active.quota;
+        local_group.reamining_quota = group_active.reamining_quota;
+        local_group.days = group_active.days;
+        local_group.no_group = group_active.no_group;
+        local_group.name = group_active.name;
+        local_group.id_teacher = group_active.id_teacher;
+        local_group.teacher_name = group_active.teacher_name;
+        //showUserByEmail(local_group.email.toLowerCase());
     } else {
-        local_user.name = "Unknowed";
+        local_group.name = "Unknowed";
     }
 };
 // recopilar informacion 2, tomamos correo como conexion entre BD_firestrore y BD_ususarios 
 // consulta por email 
+/*
 const showUserByEmail = async (email) => {
     fs.collection("users").where("Correo", "==", email)
         .get()
@@ -56,7 +62,7 @@ const showUserByEmail = async (email) => {
         .catch(function (error) {
             console.log("Error getting documents xD: ", error);
         });
-}
+}*/
 //Actualizacion de usuario (Alumno)
 const updateGroup = (id, group_up) => fs.collection("users").doc(id).update(group_up);
 
