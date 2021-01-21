@@ -149,13 +149,13 @@ form_student_search.addEventListener('submit', async (e) => {
                             <br>
                             <select class="form-control" id="state_form_student_update_combo" required>
                                 <option value="0" selected disabled>Ingrese un estado</option>
-                                <option value="1">Aceptado</option>
-                                <option value="2">Rechazado</option>
+                                <option value="Aceptado">Aceptado</option>
+                                <option value="Rechazado">Rechazado</option>
                             </select>
                         </div>
                         <div class="row">
                             <div class="col-sm-12" style="color:white;">
-                                <h6> Espaciado discreto</h6>
+                                <br><br><br>
                             </div>
                         </div>
                         <div class="col-12">
@@ -177,6 +177,7 @@ form_student_search.addEventListener('submit', async (e) => {
             email.value = val3;
             var state = document.querySelector("#state_form_student_update");
             state.value = val5;
+
             // actualizar estudiante
             var form_update = document.querySelector("#form_student_update");
             form_update.addEventListener('submit', async e => {
@@ -190,8 +191,9 @@ form_student_search.addEventListener('submit', async (e) => {
                 var combo_state = document.querySelector("#state_form_student_update_combo").value;
                 var selected_state = state;//por si no mueve el combo rescatamos el valor del input (el que ya se tenia)
                 //Se agrego en cada uno ya que no obedecia a una función aunque esta se declarará desde antes
-                if (combo_state==1) {
-                    selected_state = "Aceptado";
+                
+                if (combo_state=="Aceptado") {
+                    selected_state = combo_state;
                     await updateStudent(id_goblal, {
                         Nombre: name.value,
                         NumCuenta: account_number.value,
@@ -200,8 +202,8 @@ form_student_search.addEventListener('submit', async (e) => {
                         Estado: selected_state//va sin value si SI se selecciona algo del combo
                     });
                 } else {
-                    if (combo_state==2) {
-                        selected_state = "Rechazado";
+                    if (combo_state=="Rechazado") {
+                        selected_state = combo_state;
                         await updateStudent(id_goblal, {
                             Nombre: name.value,
                             NumCuenta: account_number.value,
@@ -219,6 +221,41 @@ form_student_search.addEventListener('submit', async (e) => {
                         });
                     }
                 }
+                /* ESTA PARTE FUNCIONA PERO PROMEDIO A LA 3° VEZ FALLA
+                var array_combo_state = ["Aceptado","Rechazado"];
+
+                for(i=0; i<array_combo_state.length; i++){
+                    if(combo_state==array_combo_state[i]){
+                        selected_state=combo_state;
+                        updateStudent(id_goblal, {
+                            Nombre: name.value,
+                            NumCuenta: account_number.value,
+                            Carrera: career.value,
+                            Correo: email.value,
+                            Estado: selected_state
+                        });
+                    }else{
+                        updateStudent(id_goblal, {
+                            Nombre: name.value,
+                            NumCuenta: account_number.value,
+                            Carrera: career.value,
+                            Correo: email.value,
+                            Estado: selected_state.value//va con value si NO se selecciona algo del combo
+                        });
+                    }
+                }*/
+                //Esta parte igual funciona
+                /*
+                        await updateStudent(id_goblal {
+                            Nombre: name.value,
+                            NumCuenta: account_number.value,
+                            Carrera: career.value,
+                            Correo: email.value,
+                            Estado: selected_state.value//va con value si NO se selecciona algo del combo
+                        });*/
+
+
+
                 alert(name.value +" ha sido actualizado ");
                 form_update.reset();
                 id_goblal=null;
