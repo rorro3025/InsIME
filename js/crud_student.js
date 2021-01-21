@@ -13,7 +13,8 @@ const local_user = {
     uid: "",
     emailVerified: "",
     state: "",
-    career: ""
+    career: "",
+    semester: ""
 };
 
 //recopilar informacion 
@@ -26,6 +27,7 @@ const setUser = (user) => {
         local_user.photoUrl = user_active.photoURL;
         local_user.emailVerified = user_active.emailVerified;
         local_user.state = user_active.state;
+        local_user.semester = user_active.semester;
         showUserByEmail(local_user.email.toLowerCase());
     } else {
         local_user.name = "Unknowed";
@@ -45,6 +47,7 @@ const showUserByEmail = async (email) => {
                 local_user.career = student.Carrera;
                 local_user.account_numer = student.NumCuenta;
                 local_user.state = student.Estado;
+                local_user.semester = student.Semestre;
                 const say_N = document.querySelector('#title_admin');
                 say_N.innerHTML = `Hola ${local_user.name}`;
                 console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
@@ -70,6 +73,7 @@ form_student_create.addEventListener('submit', (e) => {
     const career = document.querySelector("#career_form_student").value;
     const password = document.querySelector("#password_form_student").value;
     const password_c = document.querySelector("#password_2_form_student").value;
+    const semester = document.querySelector("#semester_form_student").value;
     if (password == password_c) {
         auth
             .createUserWithEmailAndPassword(email, password)
@@ -80,6 +84,8 @@ form_student_create.addEventListener('submit', (e) => {
                     Correo: email.toLowerCase(),
                     Carrera: career,
                     NumCuenta: no_account,
+                    Semestre: semester,
+                    Estado: "Ingrese un estado",
                     Tipo: 2
                 })
                     .then(function (docRef) {
@@ -119,7 +125,7 @@ form_student_search.addEventListener('submit', async (e) => {
     fs.collection("users").where("NumCuenta", "==", no_account)
         .get()
         .then(function (querySnapshot) {
-            var val1, val2, val3, val4, val5;
+            var val1, val2, val3, val4, val5, val6;
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
                 //console.log(doc.id, " => ", doc.data());
@@ -129,6 +135,7 @@ form_student_search.addEventListener('submit', async (e) => {
                 val1 = student.Nombre;
                 val4 = student.NumCuenta;
                 val2 = student.Carrera;
+                val6 = student.Semestre;
                 val3 = student.Correo;
                 val5 = student.Estado;
                 html_value = `
@@ -140,6 +147,8 @@ form_student_search.addEventListener('submit', async (e) => {
                             <input type="number" class="form-control" id="no_cuenta_form_student_update" required>
                             <label for="carrer_form_student_update" class="form-label">Carrera</label>
                             <input type="text" class="form-control" id="career_form_student_update" required>
+                            <label for="semester_form_student_update" class="form-label">Semestre</label>
+                            <input type="text" class="form-control" id="semester_form_student_update" required>
                         </div>
                         <div class="col-md-6">
                             <label for="email_form_student_update" class="form-label">Correo electronico</label>
@@ -173,6 +182,8 @@ form_student_search.addEventListener('submit', async (e) => {
             account_number.value = val4;
             var career = document.querySelector("#career_form_student_update");
             career.value = val2;
+            var semester = document.querySelector("#semester_form_student_update");
+            semester.value = val6;
             var email = document.querySelector("#email_form_student_update");
             email.value = val3;
             var state = document.querySelector("#state_form_student_update");
@@ -185,6 +196,7 @@ form_student_search.addEventListener('submit', async (e) => {
                 var name = document.querySelector("#name_form_student_update");
                 var account_number = document.querySelector("#no_cuenta_form_student_update");
                 var career = document.querySelector("#career_form_student_update");
+                var semester = document.querySelector("#semester_form_student_update");
                 var email = document.querySelector("#email_form_student_update");
                 var state = document.querySelector("#state_form_student_update");//tomando el dato del input
                 //Tomando el dato del combo:
@@ -198,6 +210,7 @@ form_student_search.addEventListener('submit', async (e) => {
                         Nombre: name.value,
                         NumCuenta: account_number.value,
                         Carrera: career.value,
+                        Semestre: semester.value,
                         Correo: email.value,
                         Estado: selected_state//va sin value si SI se selecciona algo del combo
                     });
@@ -208,6 +221,7 @@ form_student_search.addEventListener('submit', async (e) => {
                             Nombre: name.value,
                             NumCuenta: account_number.value,
                             Carrera: career.value,
+                            Semestre: semester.value,
                             Correo: email.value,
                             Estado: selected_state//va sin value si SI se selecciona algo del combo
                         });
@@ -216,6 +230,7 @@ form_student_search.addEventListener('submit', async (e) => {
                             Nombre: name.value,
                             NumCuenta: account_number.value,
                             Carrera: career.value,
+                            Semestre: semester.value,
                             Correo: email.value,
                             Estado: selected_state.value//va con value si NO se selecciona algo del combo
                         });
@@ -231,6 +246,7 @@ form_student_search.addEventListener('submit', async (e) => {
                             Nombre: name.value,
                             NumCuenta: account_number.value,
                             Carrera: career.value,
+                            Semestre: semester.value,
                             Correo: email.value,
                             Estado: selected_state
                         });
@@ -239,6 +255,7 @@ form_student_search.addEventListener('submit', async (e) => {
                             Nombre: name.value,
                             NumCuenta: account_number.value,
                             Carrera: career.value,
+                            Semestre: semester.value,
                             Correo: email.value,
                             Estado: selected_state.value//va con value si NO se selecciona algo del combo
                         });
@@ -250,6 +267,7 @@ form_student_search.addEventListener('submit', async (e) => {
                             Nombre: name.value,
                             NumCuenta: account_number.value,
                             Carrera: career.value,
+                            Semestre: semester.value,
                             Correo: email.value,
                             Estado: selected_state.value//va con value si NO se selecciona algo del combo
                         });*/
