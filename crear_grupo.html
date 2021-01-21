@@ -71,29 +71,154 @@
             </div>
         </div>
     </div>
+<!--Presentacion-->
+    <div class="cotainer">
+        <div class="container">
+            <div class="row">
+                <div class="col offset-md-1">
+                    <div role="tabpanel">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active nav-item">
+                                <h3>Registro de alumnos</h3>
+                                <a href="index.html" class="nav-link active">Inicio</a>
+                            </li>
+                        </ul>
+    <!--contenido de las tabs-->
+                        <div class="tab-content">
+                            <!--contenedor 1 de las tabs-->
+                            <div role="tabpanel" class="tab-pane fade show active" id="sec1">
+                                <h3>Llena el siguiente formulario</h3>
+                                <form class="row g-3" id="form_group_create">
+                                    <div class="col-md-6">
+                                        <label for="classroom_form_group" class="form-label">Aula:</label>
+                                        <input type="text" class="form-control" id="classroom_form_group" required>
+                                        <label for="credits_form_group" class="form-label">Créditos:</label>
+                                        <input type="number" class="form-control" id="credits_form_group" required>
+                                        <label for="semester_form_group" class="form-label">Semestre:</label>
+                                        <input type="number" class="form-control" id="semester_form_group" required>
+                                        <label for="quota_form_group" class="form-label">Cupo:</label>
+                                        <input type="number" class="form-control" id="quota_form_group" required>
+                                        <label for="reamining_quota_form_group" class="form-label">Cupo restante:</label>
+                                        <input type="number" class="form-control" id="reamining_quota_form_group" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="key_form_group" class="form-label">Clave:</label>
+                                        <input type="number" class="form-control" id="key_form_group" required>
+                                        <label for="no_group_form_group" class="form-label">Grupo:</label>
+                                        <input type="number" class="form-control" id="no_group_form_group" required>
+                                        <label for="name_form_group" class="form-label">Nombre del laboratorio:</label>
+                                        <input type="text" class="form-control" id="name_form_group" required>
+                                        <label for="id_teacher_form_group" class="form-label">RFC del profesor:</label>
+                                        <input type="text" class="form-control" id="id_teacher_form_group" required>
+                                        <label for="teacher_name_form_group" class="form-label">Nombre del profesor:</label>
+                                        <input type="text" class="form-control" id="teacher_name_form_group" required>
+                                    </div>
+                                    <h3 style="color: white">"UNAM -FESC</h3>
+                                    <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="monday_form_group" disabled value="Lunes">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="tuesday_form_group" disabled value="Martes">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="wednesday_form_group" disabled value="Miércoles">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="thursday_form_group" disabled value="Jueves">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="friday_form_group" disabled value="Viernes">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="saturday_form_group" disabled value="Sabado">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="monday_hour_form_group">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="tuesday_hour_form_group"  >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="wednesday_hour_form_group" >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="thursday_hour_form_group"
+                                        >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="friday_hour_form_group">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="saturday_hour_form_group">
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-12" style="color:white;">
+                                            <h6> Espaciado discreto</h6>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="sec3">
+                                <h3>Ingresa la información</h3>
+                                <p>seccion 3</p>
+                            </div>
+                            <div>
+                                <br>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Crear grupo</button>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!--
+    <form class="row g-3" id="form_group_create">
     <div>
         <div>
             <div>
                 <div style= "padding: 5px; float: left; margin-left: 5%;">Aula:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 100px; float: left;" value=""></input>
+                <input type="text" id="classroom_form_group" style= "padding: 5px; height: 30px; width: 100px; float: left;" value=""></input>
                 <div style= "padding: 5px; float: left; margin-left: 2%;">Clave:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
+                <input type="text" id="key_form_group" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
                 <div style= "padding: 5px; float: left; margin-left: 2%;">Creditos:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
+                <input type="text" id="credits_form_group" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
                 <div style= "padding: 5px; float: left; margin-left: 2%;">Semestre:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
+                <input type="text" id="semester_form_group" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
                 <div style= "padding: 5px; float: left; margin-left: 2%;">Cupo:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
+                <input type="text" id="quota_form_group" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
                 <div style= "padding: 5px; float: left; margin-left: 2%;">Cupo restante:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
+                <input type="text" id="reaming_quota_form_group" style= "padding: 5px; height: 30px; width: 40px; float: left;" value=""></input>
                 <div style= "padding: 5px; float: left; margin-left: 2%;">Grupo:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 50px; float: left;" value=""></input>
+                <input type="text" id="no_group_form_group" style= "padding: 5px; height: 30px; width: 50px; float: left;" value=""></input>
                 <div style= "padding: 5px; float: left; margin-left: 2%;">Nombre:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 130px;" value=""></input>
+                <input type="text" id="name_form_group" style= "padding: 5px; height: 30px; width: 130px;" value=""></input>
             </div>
             <br>
             <div>
-                <div style= "padding: 5px; margin-left: 36%; float: left;">Nombre del Profesor:</div>
+                <div style= "padding: 5px; float: left; margin-left: 12%;">RFC del profesor:</div>
+                <input type="text" id="id_teacher_form_group" style= "padding: 5px; height: 30px; width: 250px; float: left;" value=""></input>
+                <div style= "padding: 5px; margin-left: 14%; float: left;">Nombre del Profesor:</div>
                 <input type="text" style= "padding: 5px; height: 30px; width: 260px;" value=""></input>
             </div>
         </div>
@@ -106,33 +231,31 @@
                 <div role="tabpanel" class="tab-pane fade show active" id="sec1">
                         <table style="width: 100%">
                             <tr>
-                                <th>Lunes</th>
-                                <th>Martes</th>
-                                <th>Miercoles</th>
-                                <th>Jueves</th>
-                                <th>Viernes</th>
-                                <th>Sabado</th>
+                                <th id="monday_form_group">Lunes</th>
+                                <th id="tuesday_form_group">Martes</th>
+                                <th id="wednesday_form_group">Miercoles</th>
+                                <th id="thursday_form_group">Jueves</th>
+                                <th id="friday_form_group">Viernes</th>
+                                <th id="saturday_form_group">Sabado</th>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td id="monday_hour_form_group">12:00-14:00</td>
+                                <td id="tuesday_hour_form_group"></td>
+                                <td id="wednesday_hour_form_group"></td>
+                                <td id="thursday_hour_form_group"></td>
+                                <td id="friday_hour_form_group"></td>
+                                <td id="saturday_hour_form_group"></td>
                             </tr>
                         </table>
                 </div>
             </div>
         </div>
     </div>
+</form>-->
     <div>
         <div>
             <div>
-                <div>
-                    <br>
-                    <a href="crear_grupo.html"><button type="button" class="btn btn-primary" style="margin-left: 83%" onclick="crear()">Crear grupo</button></a>
-                </div>
+                <!-- aqui antes estaba el botón -->
             </div>
         </div>
     </div>
@@ -140,7 +263,7 @@
     <!--Espaciado discreto -->
     <div class="row">
         <div class="col-sm-12" style="color:white;">
-            <h1> Espaciado discreto jajaja XD</h1>
+            <h1> UNAM - FESC</h1>
         </div>
     </div>
     <!--Footer con informacion-->
@@ -156,10 +279,6 @@
         </div>
     </div>
     <script>
-    function crear()
-        {
-           alert("Grupo creado correctamente :D");
-        }
     </script>
     <!--Scripts de firebase-->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -199,7 +318,7 @@
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
     <!--Scripts de boostrap-->
-    <script src="js/act_index_1.js"></script>
+    <script src="js/crud_group.js"></script>
 </body>
 
 </html>
