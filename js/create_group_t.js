@@ -1,9 +1,8 @@
-console.log("CRUD GRUPOS");
+console.log("Creacion de grupos");
 
 //crecion de los elementos FB
 const fs = firebase.firestore();
 const auth = firebase.auth();
-var id_goblal = "";
 
 function Group(croom, key, credits, quota, res_quota, days, no_group, id_teacher, name, teacher_name, semester) {
     this.Aula = croom;
