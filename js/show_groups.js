@@ -45,35 +45,4 @@ function set_info() {
             `
         });
     });
-    /*for (let index = 0; index < array.length; index++) {
-        table_groups.innerHTML = table_groups.innerHTML + `
-        <tr>
-        <td>${array[index].Clave}</td>
-        <td>${array[index].Semestre}</td>
-        <td>${array[index].Nombre}</td>
-        <td>${array[index].Creditos}</td>
-        <td>${array[index].Grupo}</td>
-        <td>${array[index].Aula}</td>
-        <td><a href="consultar_grupos.html"><button type="button" class="clave"></button></a>
-        <td><a href="actualizar_grupos.html"><button type="button" class="actualizar"></button></a></td>
-        <td><button type="button" class="eliminar" onclick="alerta()"></button></td>
-        </tr>                               
-        `
-    }*/
-
 }
-/* LLenado de tabla
-console.log("registrado");
-        form_group_create.reset();
-        window.location = "crear_grupo.html";
-<tr>
-                                <td>17</td>
-                                <td>7</td>
-                                <td>Laboratorio de computo</td>
-                                <td>12</td>
-                                <td>1552</td>
-                                <td>A12-213</td>
-                                <td><a href="consultar_grupos.html"><button type="button" class="clave"></button></a>
-                                <td><a href="actualizar_grupos.html"><button type="button" class="actualizar"></button></a></td>
-                                <td><button type="button" class="eliminar" onclick="alerta()"></button></td>
-                            </tr>*/
