@@ -19,7 +19,8 @@ function Group(croom, key, credits, quota, days, no_group, id_teacher, name, tea
 var table_groups = document.querySelector("#group_research_table");
 
 function set_info() {
-    fs.collection("groups").get().then(function(querySnapshot) {
+    fs.collection("groups").orderBy("Semestre","asc").get().then(function(querySnapshot) {
+    //fs.collection("groups").get().then(function(querySnapshot) {    
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             var info = doc.data();
