@@ -1,6 +1,10 @@
 console.log("Visualizacion de grupos");
 
 //crecion de los elementos FB
+const fs = firebase.firestore();
+const auth = firebase.auth();
+
+const deleteGroup = (id) => fs.collection("groups").doc(id).delete();
 
 function Group(croom, key, credits, quota, days, no_group, id_teacher, name, teacher_name, semester) {
     this.Aula = croom;
@@ -16,21 +20,29 @@ function Group(croom, key, credits, quota, days, no_group, id_teacher, name, tea
     this.Semestre = semester;
 }
 
-var group_1 = new Group("A17", 17, 12, 20, ["-", "15:20-16:20", "-"], 1751, "asdadasd", "Laboratorio de computo", "Paola G", 6);
-var group_2 = new Group("A18", 18, 13, 21, ["-", "15:20-16:20", "-"], 1752, "id_prof", "Laboratorio de antenas", "Abby", 7);
-var group_3 = new Group("A19", 19, 14, 22, ["-", "15:20-16:20", "-"], 1752, "id_prof", "Laboratorio de antenas", "Abby", 7);
-var array = [group_1, group_2,group_3];
 var table_groups = document.querySelector("#group_research_table");
 
-function set_info() {
-    fs.collection("groups").get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
+const set_info = (data) =>{
+    if(data.length){
+        let html = `
+        <tr>
+        <th>Clave</th>
+        <th>Semestre</th>
+        <th>Laboratorio</th>
+        <th>CR</th>
+        <th>Grupo</th>
+        <th>Aula</th>
+        <th>Consultar</th>
+        <th>Actualizar</th>
+        <th>Eliminar</th>
+        </tr>
+        `
+        data.forEach((doc)=>{
             var info = doc.data();
             var id_bot = doc.id;
             //id_goblal = id_bot;
             var group_ac = new Group(info.Aula,info.Clave,info.Creditos,info.Cupo,info.Dias,info.Grupo,info.Id_profesor,info.Nombre,info.Profesor_nom,info.Semestre);
-            table_groups.innerHTML = table_groups.innerHTML + `
+            const li_element =`
             <tr>
             <td>${group_ac.Clave}</td>
             <td>${group_ac.Semestre}</td>
@@ -42,20 +54,50 @@ function set_info() {
             <td><a href="actualizar_grupos.html"><button type="button" class="actualizar"></button></a></td>
             <td><button type="button" class="eliminar dl-bot" data-id="${id_bot}"></button></td>
             </tr>                               
-            `
+            `;
+            html += li_element
         });
-        setActionDelete();
-    });
-  
+        table_groups.innerHTML = html;
+    }else{
+        console.log("No se encontraron grupos");
+    }
 }
 
+// evento de cambios en fs
+const onGetGroup = (callback) => fs.collection("groups").onSnapshot(callback);
+auth.onAuthStateChanged(user => {
+    if (user) {
+        onGetGroup((querySnapshot)=>{
+            set_info(querySnapshot.docs);
+            setActionDelete();
+        })
+    } else {
+        set_info([]);
+    }
+})
+
+// asignacion de funcion a botones de eliminar 
 function setActionDelete() {
     const array_bot = document.querySelectorAll(".dl-bot");
     for (let index = 0; index < array_bot.length; index++) {
         array_bot[index].addEventListener('click', ()=>{
             var id = array_bot[index].getAttribute('data-id');
-            alert ("se presiono el id: "+ id);
+            deleteGroup(id);
+            console.log("Se elimino el grupo");
         });
         
     } 
 }
+
+    // cerrar sesion
+const logout = document.querySelector('#logout-btn');
+logout.addEventListener('click', e => {
+    e.preventDefault();
+    auth
+        .signOut()
+        .then(() => {
+            console.log("Cerraste sesion");
+            $('#close-question').modal('hide');
+            window.location = "index.html";
+        });
+});
