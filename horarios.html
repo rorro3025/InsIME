@@ -12,7 +12,7 @@
     <title>Horarios</title>
 </head>
 
-<body class="bod">
+<body class="bod" onload="set_info()">
     <!--Header banner -->
     <div class="container-fluid" style="Background-color:#003366;">
         <p align="left"><a href="index.html"><img src="img/logounam.png" alt="UNAM" width="424" height="130" border="0"
@@ -92,7 +92,7 @@
                 <div role="tabpanel" class="tab-pane fade show active" id="sec1">
                     <h3 style="text-align: center;">Horarios</h3>
                         <br>
-                        <table style="width: 100%">
+                        <table style="width: 100%" id="group_research_table">
                             <tr>
                                 <th>Clave</th>
                                 <th>Laboratorio</th>
@@ -107,66 +107,6 @@
                                 <th>Jueves</th>
                                 <th>Viernes</th>
                                 <th>Sabado</th>
-                            </tr>
-                            <tr>
-                                <td>17</td>
-                                <td>Laboratorio de computo</td>
-                                <td>7</td>
-                                <td>12</td>
-                                <td>1552</td>
-                                <td>A12-213</td>
-                                <td>Juan Miguel Martínez Maldonado</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>12:00 - 14:00</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                            </tr>
-                            <tr>
-                                <td>22</td>
-                                <td>Laboratorio de mecanica</td>
-                                <td>3</td>
-                                <td>10</td>
-                                <td>1552</td>
-                                <td>A12-230</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td>Laboratorio de sistemas</td>
-                                <td>1</td>
-                                <td>08</td>
-                                <td>1552</td>
-                                <td>A12-233</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>09</td>
-                                <td>Laboratorio de electrica</td>
-                                <td>9</td>
-                                <td>06</td>
-                                <td>1552</td>
-                                <td>A12-234</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                             </tr>
                         </table>
                         <br>
@@ -249,6 +189,7 @@ function alerta()
         crossorigin="anonymous"></script>
     <!--Scripts de personal-->
     <script src="js/act_index_2.js"></script>
+    <script src="js/horarios.js"></script>
 </body>
 
 </html>
