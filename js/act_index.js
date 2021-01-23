@@ -61,3 +61,14 @@ sing_in.addEventListener('submit', (e) => {
       console.log(error);
     });
 });
+
+//Recuperar contraseña de usuario.
+const form_recover_password = document.querySelector("#form_recover_password");
+form_recover_password.addEventListener('click', function(ev) {
+  const email_address = document.querySelector('#InputEmail1').value;
+  auth.sendPasswordResetEmail(email_address).then(function(){
+    alert("Restablecimiento de contraseña enviado");
+  }).catch(function(error){
+    alert("Asegurte de haber escrito correctamente tu correo");
+  });
+});
