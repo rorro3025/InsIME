@@ -38,11 +38,24 @@ function set_info() {
             <td>${group_ac.Creditos}</td>
             <td>${group_ac.Grupo}</td>
             <td>${group_ac.Aula}</td>
-            <td><a href="consultar_grupos.html"><button type="button" class="clave"></button></a>
+            <td><a href="consultar_grupos.html"><button type="button" class="clave"></button></a></td>
             <td><a href="actualizar_grupos.html"><button type="button" class="actualizar"></button></a></td>
-            <td><button type="button" class="eliminar" onclick="alerta() data-id="${id_bot}"></button></td>
+            <td><button type="button" class="eliminar dl-bot" data-id="${id_bot}"></button></td>
             </tr>                               
             `
         });
+        setActionDelete();
     });
+  
+}
+
+function setActionDelete() {
+    const array_bot = document.querySelectorAll(".dl-bot");
+    for (let index = 0; index < array_bot.length; index++) {
+        array_bot[index].addEventListener('click', ()=>{
+            var id = array_bot[index].getAttribute('data-id');
+            alert ("se presiono el id: "+ id);
+        });
+        
+    } 
 }
