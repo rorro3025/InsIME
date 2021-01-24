@@ -4,7 +4,6 @@ console.log("Estas en el inicio de sesion");
 // colecciones de datos
 let collections = ["students","teachers","admins"];
 var collection = "";
-
 //crecion de los elementos FB
 const auth = firebase.auth();
 const fs = firebase.firestore();
