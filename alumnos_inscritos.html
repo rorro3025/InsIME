@@ -12,7 +12,13 @@
     <title>Alumnos inscritos</title>
 </head>
 
-<body class="bod">
+<body class="bod" onload="cargarFunciones()">
+    <script>
+        function cargarFunciones(){
+            set_info_form_teachers("k87OTQckT4E8LWYUJhnz");
+            show_students_form_group("k87OTQckT4E8LWYUJhnz");
+        }
+    </script>
     <!--Header banner -->
     <div class="container-fluid" style="Background-color:#003366;">
         <p align="left"><a href="index.html"><img src="img/logounam.png" alt="UNAM" width="424" height="130" border="0"
@@ -64,31 +70,32 @@
         <div class="container">
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade show active" id="sec1">
-                    <h3>Lista de los alumnos inscritos al laboratorio</h3>
-                        <label style="margin-left: 71%">
-                            Matricula:
-                            <input type="text">
-                        </label>
-                        <button class="clave">Buscar</button>
-                        <table style="width: 100%">
+                     <table style="width: 100%" id="show_groups_form_teacher">
                             <tr>
-                                <th colspan="2">Laboratorio de computo</th>
+                                <th>Clave</th>
+                                <th>Laboratorio</th>
+                                <th>Semestre</th>
+                                <th>CR</th>
+                                <th>Grupo</th>
+                                <th>Aula</th>
+                                <th>Profesor</th>
+                                <th>Lunes</th>
+                                <th>Martes</th>
+                                <th>Miercoles</th>
+                                <th>Jueves</th>
+                                <th>Viernes</th>
+                                <th>Sabado</th>
+                            </tr>
+                        </table>
+                        <br><br>
+                        <table style="width: 100%" id="show_students_form_teacher">
+                            <tr>
+                                <th colspan="3">Laboratorio de computo</th>
                             </tr>
                             <tr>
-                                <th>Nombre del alumno</th>
                                 <th>Matricula</th>
-                            </tr>
-                            <tr>
-                                <td>Mejia Castro Ian Orlando</td>
-                                <td>41807658</td>
-                            </tr>
-                            <tr>
-                                <td>Trujillo Jimenez Daniel</td>
-                                <td>41809768</td>
-                            </tr>
-                            <tr>
-                                <td>Hernandez Olguin Rodrigo</td>
-                                <td>41809657</td>
+                                <th>Nombre del alumno</th>
+                                <th>Correo</th>
                             </tr>
                         </table>
                         <br>
@@ -189,6 +196,7 @@ function alerta()
         crossorigin="anonymous"></script>
     <!--Scripts de personal-->
     <script src="js/act_index_2.js"></script>
+    <script src="js/alumnos_inscritos.js"></script>
 </body>
 
 </html>
