@@ -118,7 +118,7 @@ function setActionShow() {
     }
 }
 
-// cerrar sesion
+// Cerrar sesion 
 const logout = document.querySelector('#logout-btn');
 logout.addEventListener('click', e => {
     e.preventDefault();

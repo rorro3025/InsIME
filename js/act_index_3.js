@@ -40,7 +40,6 @@ const showUserByEmail = async (email) => {
         var student = doc.data();
         local_user.name = student.Nombre;
         local_user.RFC = student.RFC;
-        console.log(local_user.name,local_user.career,local_user.account_numer);
         const say_N = document.querySelector('#title_admin');
         const user_info = document.querySelector('#info_user');
         say_N.innerHTML = `Hola ${local_user.name}`;
@@ -52,7 +51,7 @@ const showUserByEmail = async (email) => {
                         </li>
                         `;
         user_info.innerHTML = html_value;
-        console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
+        console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email, "RFC; " + local_user.RFC);
       });
     })
     .catch(function (error) {
@@ -78,7 +77,6 @@ logout.addEventListener('click', e => {
 auth.onAuthStateChanged((user) => {
   if (user) {
     setUser(user);
-    console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
     //ID Sandra("BFhfhzXQvsHLQj6t1OQO") ID Rodrigo("hL4UJEsIITomzuuykJva");
   } else {
     console.log("no hay usuario activo");
