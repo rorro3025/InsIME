@@ -41,6 +41,7 @@ const local_user = {
           local_user.name = student.Nombre;
           local_user.RFC = student.RFC;
           set_info_form_teachers(local_user.RFC);
+          set_info_form_teachers_2(local_user.RFC);
           console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email, "RFC; " + local_user.RFC);
         });
       })
@@ -90,7 +91,6 @@ function Group(croom, key, credits, quota, days, no_group, id_teacher, name, tea
 
 //Mostrar los horarios a los alumnos en orden ascendente por el semestre
 var table_groups_horarios = document.querySelector("#group_research_table");
-
 function set_info() {
     fs.collection("groups").orderBy("Semestre","asc").get().then(function(querySnapshot) {
     //fs.collection("groups").get().then(function(querySnapshot) {    
@@ -154,4 +154,72 @@ function set_info_form_teachers(id_teacher_act) {
         });
     });
   
+}
+//Para mostrar los alumnos inscritos en cada grupo
+var table_students = document.querySelector("#show_students_form_teacher");
+
+function show_students_form_group(id_button_form_group){
+    
+    fs.collection("inscription").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            const id_grupos = [doc.IDGrupos];
+            for(var i=0; i < id_grupos.length; i++) {
+                if(id_grupos[i] == id_button_form_group){
+                    var number_account = doc.NumCuenta;
+                    fs.collection("users").where("NumCuenta","==", number_account).get().then(function(querySelector){
+                        querySnapshot.forEach(function(doc) {
+                        // doc.data() is never undefined for query doc snapshots
+                        var info = doc.data();
+                        var id_bot = doc.id;
+                        //id_goblal = id_bot;
+                        var student_ac = new student(info.NumCuenta,info.Nombre,info.Correo);
+                        table_students.innerHTML = table_students.innerHTML + `
+                        <tr>
+                        <td>${student_ac.NumCuenta}</td>
+                        <td>${student_ac.Nombre}</td>
+                        <td>${student_ac.Correo}</td>
+                        </tr>                               
+                        `
+                        });
+                    });
+                }
+            }
+        });
+    });
+
+}
+
+//Mostrar a los profesores sus grupos asignados en específico
+var table_groups_2 = document.querySelector("#show_groups_form_teacher_2");
+
+function set_info_form_teachers_2(id_button_form_group) {
+    fs.collection("groups").get().then(function(querySnapshot) {
+    //fs.collection("groups").get().then(function(querySnapshot) {    
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            var info = doc.data();
+            var id_bot = doc.id;
+            //id_goblal = id_bot;
+            if(doc.id == id_button_form_group){
+                var group_ac = new Group(info.Aula,info.Clave,info.Creditos,info.Cupo,info.Dias,info.Grupo,info.Id_profesor,info.Nombre,info.Profesor_nom,info.Semestre);
+                table_groups_2.innerHTML = table_groups_2.innerHTML + `
+                <tr>
+                <td>${group_ac.Clave}</td>
+                <td>${group_ac.Nombre}</td>
+                <td>${group_ac.Semestre}</td>
+                <td>${group_ac.Creditos}</td>
+                <td>${group_ac.Grupo}</td>
+                <td>${group_ac.Aula}</td>
+                <td>${group_ac.Profesor_nom}</td>
+                <td>${group_ac.Dias[0]}</td>
+                <td>${group_ac.Dias[1]}</td>
+                <td>${group_ac.Dias[2]}</td>
+                <td>${group_ac.Dias[3]}</td>
+                <td>${group_ac.Dias[4]}</td>
+                <td>${group_ac.Dias[5]}</td>
+                </tr>                               
+                `
+            }
+        });
+    });
 }

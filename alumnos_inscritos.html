@@ -12,13 +12,7 @@
     <title>Alumnos inscritos</title>
 </head>
 
-<body class="bod" onload="cargarFunciones()">
-    <script>
-        function cargarFunciones(){
-            set_info_form_teachers("k87OTQckT4E8LWYUJhnz");
-            show_students_form_group("k87OTQckT4E8LWYUJhnz");
-        }
-    </script>
+<body class="bod">
     <!--Header banner -->
     <div class="container-fluid" style="Background-color:#003366;">
         <p align="left"><a href="index.html"><img src="img/logounam.png" alt="UNAM" width="424" height="130" border="0"
@@ -70,7 +64,7 @@
         <div class="container">
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade show active" id="sec1">
-                     <table style="width: 100%" id="show_groups_form_teacher">
+                     <table style="width: 100%" id="show_groups_form_teacher_2">
                             <tr>
                                 <th>Clave</th>
                                 <th>Laboratorio</th>
@@ -127,7 +121,41 @@
             </div>
         </div>
     </div>
-     <!--Espaciado discreto-->
+    <div class="modal " id="oculto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¿Necesitas ayuda?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table style="width: 100%" id="show_groups_form_teacher">
+                        <tr>
+                            <th>Clave</th>
+                            <th>Laboratorio</th>
+                            <th>Semstre</th>
+                            <th>CR</th>
+                            <th>Grupo</th>
+                            <th>Aula</th>
+                            <th>Profesor</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miercoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sabado</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!--Espaciado discreto
+   
+    
+    -->
     <div class="row">
         <div class="col-sm-12" style="color:white;">
             <h1> Espaciado discreto</h1>
@@ -195,8 +223,7 @@ function alerta()
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
     <!--Scripts de personal-->
-    <script src="js/act_index_3.js"></script>
-    <script src="js/alumnos_inscritos.js"></script>
+    <script src="js/horarios.js"></script>
 </body>
 
 </html>

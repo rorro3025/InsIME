@@ -12,7 +12,7 @@ function Group(croom, key, credits, quota, days, no_group, id_teacher, name, tea
     this.Semestre = semester;
 }
 
-function student(num_account, name, email) {
+function Student(num_account, name, email) {
     this.NumCuenta = num_account;
     this.Nombre = name;
     this.Correo = email;
