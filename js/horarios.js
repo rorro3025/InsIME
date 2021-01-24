@@ -76,7 +76,7 @@ function set_info_form_teachers(id_teacher_act) {
             <td>${group_ac.Dias[3]}</td>
             <td>${group_ac.Dias[4]}</td>
             <td>${group_ac.Dias[5]}</td>
-            <td><a href="#"><button type="button" class="clave"></button></a></td>
+            <td><a href="alumnos_inscritos.html"><button type="button" class="clave" id="${id_bot}"></button></a></td>
             </tr>                               
             `
         });
