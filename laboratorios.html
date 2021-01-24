@@ -12,7 +12,7 @@
     <title>Laboratorios</title>
 </head>
 
-<body class="bod">
+<body class="bod" onload="set_info_form_teachers('GP12345')">
     <!--Header banner -->
     <div class="container-fluid" style="Background-color:#003366;">
         <p align="left"><a href="index.html"><img src="img/logounam.png" alt="UNAM" width="424" height="130" border="0"
@@ -64,13 +64,14 @@
         <div class="container">
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade show active" id="sec1">
-                    <h3>Haz clic en un laboratorio para visualizar las inscripciones de los alumnos</h3>
-                        <label style="margin-left: 74%">
+                    <h3>Tus laboratorios asignados:</h3>
+                        <!--<label style="margin-left: 74%">
                             Clave:
                             <input type="text">
                         </label>
-                        <button class="clave">Buscar</button>
-                        <table style="width: 100%">
+                        <button class="clave">Buscar</button>-->
+                        <br>
+                        <table style="width: 100%" id="show_groups_form_teacher">
                             <tr>
                                 <th>Clave</th>
                                 <th>Laboratorio</th>
@@ -78,68 +79,14 @@
                                 <th>CR</th>
                                 <th>Grupo</th>
                                 <th>Aula</th>
+                                <th>Profesor</th>
                                 <th>Lunes</th>
                                 <th>Martes</th>
                                 <th>Miercoles</th>
                                 <th>Jueves</th>
                                 <th>Viernes</th>
                                 <th>Sabado</th>
-                            </tr>
-                            <tr>
-                                <td><a href="alumnos_inscritos.html" style="color: black">17</a></td>
-                                <td><a href="alumnos_inscritos.html" style="color: black">Laboratorio de computo</a></td>
-                                <td>7</td>
-                                <td><a href="alumnos_inscritos.html" style="color: black">12</a></td>
-                                <td><a href="alumnos_inscritos.html" style="color: black">1552</a></td>
-                                <td><a href="alumnos_inscritos.html" style="color: black">A12-213</a></td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>12:00 - 14:00</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>---</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td><a href="#" style="color: black"></a></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th>Alumnos Inscritos</th>
                             </tr>
                         </table>
                 </div>
@@ -239,6 +186,7 @@ function alerta()
         crossorigin="anonymous"></script>
     <!--Scripts de personal-->
     <script src="js/act_index_2.js"></script>
+    <script src="js/horarios.js"></script>
 </body>
 
 </html>
