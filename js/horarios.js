@@ -53,7 +53,7 @@ function set_info() {
 var table_groups = document.querySelector("#show_groups_form_teacher");
 
 function set_info_form_teachers(id_teacher_act) {
-    var s = fs.collection("groups").where("Id_profesor", "==", id_teacher_act).get().then(function(querySnapshot) {
+    fs.collection("groups").where("Id_profesor", "==", id_teacher_act).get().then(function(querySnapshot) {
     //fs.collection("groups").get().then(function(querySnapshot) {    
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
