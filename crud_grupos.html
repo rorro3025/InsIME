@@ -65,7 +65,8 @@
         <div class="container">
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade show active" id="sec1">
-                    <h3>Grupos de laboratorios existentes</h3>
+                    <a href="crud_grupos.html"><button class="atras" style="float: left;"></button></a>
+                    <h3 style="text-align: center;">Administración de laboratorios existentes</h3>
                     <table style="width: 100%" id="group_research_table">
 
                     </table>
@@ -75,34 +76,22 @@
                     <a href="crear_grupo.html"><button type="button" class="btn btn-primary"
                             style="margin-left: 90%">Crear grupo</button></a>
                 </div>
+                <div class="container" id="result_group">
+                </div>
+                <div class="container" id="form_group_update">
+                </div>
             </div>
         </div>
     </div>
-    <!-- Button trigger modal 
+    <!--Button trigger modal 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Launch static backdrop modal
-    </button>-->
-
+    </button>
+-->
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul id="attrip_group">
-
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
-            </div>
-        </div>
+        
     </div>
     <!--Espaciado discreto -->
     <div class="row">
