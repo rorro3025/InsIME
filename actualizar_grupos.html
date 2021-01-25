@@ -71,75 +71,151 @@
             </div>
         </div>
     </div>
-    <div>
-        <div>
-            <div>
-                <div style= "padding: 5px; float: left; margin-left: 5%;">Aula:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 100px; float: left;" value="A2-1005"></input>
-                <div style= "padding: 5px; float: left; margin-left: 2%;">Clave:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value="01"></input>
-                <div style= "padding: 5px; float: left; margin-left: 2%;">Creditos:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value="10"></input>
-                <div style= "padding: 5px; float: left; margin-left: 2%;">Semestre:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value="9"></input>
-                <div style= "padding: 5px; float: left; margin-left: 2%;">Cupo:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value="20"></input>
-                <div style= "padding: 5px; float: left; margin-left: 2%;">Cupo restante:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 40px; float: left;" value="20"></input>
-                <div style= "padding: 5px; float: left; margin-left: 2%;">Grupo:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 50px; float: left;" value="1151"></input>
-                <div style= "padding: 5px; float: left; margin-left: 2%;">Nombre:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 130px;" value="Termodinamica"></input>
-            </div>
-            <br>
-            <div>
-                <div style= "padding: 5px; margin-left: 36%; float: left;">Nombre del Profesor:</div>
-                <input type="text" style= "padding: 5px; height: 30px; width: 260px;" value="Juan Miguel Martinez Maldonado"></input>
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
+    <!--Presentacion-->
     <div class="cotainer">
         <div class="container">
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade show active" id="sec1">
-                        <table style="width: 100%">
-                            <tr>
-                                <th>Lunes</th>
-                                <th>Martes</th>
-                                <th>Miercoles</th>
-                                <th>Jueves</th>
-                                <th>Viernes</th>
-                                <th>Sabado</th>
-                            </tr>
-                            <tr>
-                                <td>12:00- 14:00</td>
-                                <td>-</td>
-                                <td>12:30 - 15:30</td>
-                                <td>-</td>
-                                <td>12:00 - 14:00</td>
-                                <td>-</td>
-                            </tr>
-                        </table>
+            <div class="row">
+                <div class="col offset-md-1">
+                    <div role="tabpanel">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active nav-item">
+                                <h3>Actualizar de grupos</h3>
+                                <a href="crud_grupos.html" class="nav-link active">Menú de grupos</a>
+                            </li>
+                        </ul>
+    <!--contenido de las tabs-->
+                        <div class="tab-content">
+                            <!--contenedor 1 de las tabs-->
+                            <div role="tabpanel" class="tab-pane fade show active" id="sec1">
+                                <h3>Actualiza los datos necesarios del siguiente formulario</h3>
+                                <form class="row g-3" id="form_group_search">
+                                    <div class="col-md-6">
+                                        <label for="classroom_form_group" class="form-label">Aula:</label>
+                                        <input type="text" class="form-control" id="classroom_form_group" required>
+                                        <label for="credits_form_group" class="form-label">Créditos:</label>
+                                        <input type="number" class="form-control" id="credits_form_group" required>
+                                        <label for="semester_form_group" class="form-label">Semestre:</label>
+                                        <input type="number" class="form-control" id="semester_form_group" required>
+                                        <label for="quota_form_group" class="form-label">Cupo:</label>
+                                        <input type="number" class="form-control" id="quota_form_group" required>
+                                        <label for="reamining_quota_form_group" class="form-label">Cupo restante:</label>
+                                        <input type="number" class="form-control" id="reamining_quota_form_group" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="key_form_group" class="form-label">Clave:</label>
+                                        <input type="number" class="form-control" id="key_form_group" required>
+                                        <label for="no_group_form_group" class="form-label">Grupo:</label>
+                                        <input type="number" class="form-control" id="no_group_form_group" required>
+                                        <label for="name_form_group" class="form-label">Nombre del laboratorio:</label>
+                                        <input type="text" class="form-control" id="name_form_group" required>
+                                        <label for="id_teacher_form_group" class="form-label">RFC del profesor:</label>
+                                        <input type="text" class="form-control" id="id_teacher_form_group" required>
+                                        <label for="teacher_name_form_group" class="form-label">Nombre del profesor:</label>
+                                        <input type="text" class="form-control" id="teacher_name_form_group" required>
+                                    </div>
+                                    <h3 style="color: white">"UNAM -FESC</h3>
+                                    <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="monday_form_group" disabled value="Lunes">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="tuesday_form_group" disabled value="Martes">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="wednesday_form_group" disabled value="Miércoles">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="thursday_form_group" disabled value="Jueves">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="friday_form_group" disabled value="Viernes">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="saturday_form_group" disabled value="Sabado">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="monday_hour_form_group">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="tuesday_hour_form_group"  >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="wednesday_hour_form_group" >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="thursday_hour_form_group"
+                                        >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="friday_hour_form_group">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="saturday_hour_form_group">
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-12" style="color:white;">
+                                            <h6> Espaciado discreto</h6>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="sec3">
+                                <h3>Ingresa la información</h3>
+                                <p>seccion 3</p>
+                            </div>
+                            <div>
+                                <br>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Actualizar grupo</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--formulario de resultado-->
+                                <div class="container" id="result_group">
+                                </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div>
-        <div>
-            <div>
-                <div>
-                    <br>
-                    <a href="#"><button type="button" class="btn btn-primary" style="margin-left: 80.6%" onclick="actualizar()">Actualizar grupo</button></a>
+    </div>
+    </div>
+<!--
+    Esto no sirve, es solo para evitar problemas nulos con otras páginas por que se usa el mismo script
+-->
+    <div class="modal " id="oculto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¿Necesitas ayuda?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table style="width: 100%" id="group_research_table">
+                        <tr>
+                            <th>Clave</th>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    <!--Espaciado discreto -->
+
+     <!--Espaciado discreto -->
     <div class="row">
         <div class="col-sm-12" style="color:white;">
-            <h1> Espaciado discreto jajaja XD</h1>
+            <br>
+            <h1> Espaciado discreto</h1>
         </div>
     </div>
     <!--Footer con informacion-->
@@ -154,11 +230,7 @@
             <p>© 2019 UNAM. Todos los derechos reservados | Facultad de Estudios Superiores Cuautitlán.</p>
         </div>
     </div>
-    <script>
-    function actualizar()
-        {
-           alert("Grupo actualizado correctamente :D");
-        }
+    
     </script>
     <!--Scripts de firebase-->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -198,7 +270,7 @@
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
     <!--Scripts de boostrap-->
-    <script src="js/act_index_1.js"></script>
+    <script src="js/show_groups.js"></script>
 </body>
 
 </html>
