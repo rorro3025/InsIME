@@ -61,7 +61,7 @@ function show_students_form_group(id_button_form_group){
     fs.collection("inscription").get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             const id_grupos = [doc.IDGrupos];
-            for(var i=0; i <= id_grupos.length; i++) {
+            for(var i=0; i < id_grupos.length; i++) {
                 if(id_grupos[i] == id_button_form_group){
                     var number_account = doc.NumCuenta;
                     fs.collection("users").where("NumCuenta","==", number_account).get().then(function(querySelector){
