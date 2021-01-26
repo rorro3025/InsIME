@@ -93,7 +93,7 @@ form_student_create.addEventListener('submit', (e) => {
                         alert("Usuario: " + name + " ha sido registrado");
                         console.log("registrado");
                         form_student_create.reset();
-                        window.location = "index.html";
+                        window.location = "menu_student.html";
                     })
                     .catch(function (error) {
                         console.error("Error adding document: ", error);
