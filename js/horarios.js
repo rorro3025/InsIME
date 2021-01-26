@@ -4,6 +4,7 @@ var grupo_selec = "indefinido";
 //crecion de los elementos FB
 const auth = firebase.auth();
 const fs = firebase.firestore();
+var grupo_select = "";
 
 const getGruop = (id) => fs.collection("groups").doc(id).get();
 //objeto usuario 
@@ -42,7 +43,9 @@ const showUserByEmail = async (email) => {
         local_user.name = student.Nombre;
         local_user.RFC = student.RFC;
         set_info_form_teachers(local_user.RFC);
-        console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email, "RFC; " + local_user.RFC);
+        
+        //set_info_form_teachers_2(grupo_select);
+        console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email, "RFC " + local_user.RFC);
       });
     })
     .catch(function (error) {
@@ -68,7 +71,6 @@ logout.addEventListener('click', e => {
 auth.onAuthStateChanged((user) => {
   if (user) {
     setUser(user);
-    setAcion();
     //ID Sandra("BFhfhzXQvsHLQj6t1OQO") ID Rodrigo("hL4UJEsIITomzuuykJva");
   } else {
     console.log("no hay usuario activo");
@@ -89,6 +91,38 @@ function Group(croom, key, credits, quota, days, no_group, id_teacher, name, tea
   this.Profesor_nom = teacher_name;
   this.Semestre = semester;
 }
+
+// evento de cambios en fs
+const onGetGroup = (callback) => fs.collection("groups").onSnapshot(callback);
+auth.onAuthStateChanged(user => {
+    if (user) {
+        onGetGroup((querySnapshot) => {
+            //set_info_2(querySnapshot.docs);
+        })
+    } else {
+        //set_info_2([]);
+    }
+})
+
+function setActionButton() {
+  const array_bot = document.querySelectorAll(".see_com");
+  for (let index = 0; index < array_bot.length; index++) {
+    array_bot[index].addEventListener('click', async ()=>{
+      var id = array_bot[index].getAttribute("data-id");
+      grupo_select = id;
+      var doc = await getGruop(id);
+      const grupo_a = doc.data();
+      set_info_form_teachers_2(id);
+      show_students_form_group(id);
+      /*grupo_selec = id;
+      set_info_form_teachers_2(id);
+      console.log("1: "+ grupo_selec+ "2 " + id);
+      window.location= "alumnos_inscritos.html";*/
+    });
+
+  }
+}
+
 
 //Mostrar los horarios a los alumnos en orden ascendente por el semestre
 var table_groups_horarios = document.querySelector("#group_research_table");
@@ -149,67 +183,17 @@ function set_info_form_teachers(id_teacher_act) {
             <td>${group_ac.Dias[3]}</td>
             <td>${group_ac.Dias[4]}</td>
             <td>${group_ac.Dias[5]}</td>
-            <td><button type="button" class="clave" data-id="${id_bot}"></button></td>
+            <td><button type="button" class="clave see_com" data-id="${id_bot}"></button></td>
             </tr>                               
             `
     });
+    setActionButton();
   });
-
-}
-
-function setAcion() {
-  const array_bot = document.querySelectorAll(".clave");
-  for (let index = 0; index < array_bot.length; index++) {
-    array.bot[index].addEventListener('click', ()=>{
-      var id = array_bot[index].getAttribute("data-id");
-      alert(id);
-      /*grupo_selec = id;
-      set_info_form_teachers_2(id);
-      console.log("1: "+ grupo_selec+ "2 " + id);
-      window.location= "alumnos_inscritos.html";*/
-    })
-
-  }
-}
-
-
-//Para mostrar los alumnos inscritos en cada grupo
-var table_students = document.querySelector("#show_students_form_teacher");
-
-function show_students_form_group(id_button_form_group) {
-
-  fs.collection("inscription").get().then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-      const id_grupos = [doc.IDGrupos];
-      for (var i = 0; i < id_grupos.length; i++) {
-        if (id_grupos[i] == id_button_form_group) {
-          var number_account = doc.NumCuenta;
-          fs.collection("users").where("NumCuenta", "==", number_account).get().then(function (querySelector) {
-            querySnapshot.forEach(function (doc) {
-              // doc.data() is never undefined for query doc snapshots
-              var info = doc.data();
-              var id_bot = doc.id;
-              //id_goblal = id_bot;
-              var student_ac = new student(info.NumCuenta, info.Nombre, info.Correo);
-              table_students.innerHTML = table_students.innerHTML + `
-                        <tr>
-                        <td>${student_ac.NumCuenta}</td>
-                        <td>${student_ac.Nombre}</td>
-                        <td>${student_ac.Correo}</td>
-                        </tr>                               
-                        `
-            });
-          });
-        }
-      }
-    });
-  });
-
 }
 
 //Mostrar a los profesores sus grupos asignados en específico
 var table_groups_2 = document.querySelector("#show_groups_form_teacher_2");
-
+var table_one_es_clean = document.querySelector("#show_groups_form_teacher");
 function set_info_form_teachers_2(id_button_form_group) {
   fs.collection("groups").get().then(function (querySnapshot) {
     //fs.collection("groups").get().then(function(querySnapshot) {    
@@ -218,9 +202,25 @@ function set_info_form_teachers_2(id_button_form_group) {
       var info = doc.data();
       var id_bot = doc.id;
       //id_goblal = id_bot;
+      table_one_es_clean.innerHTML = ""; 
       if (doc.id == id_button_form_group) {
         var group_ac = new Group(info.Aula, info.Clave, info.Creditos, info.Cupo, info.Dias, info.Grupo, info.Id_profesor, info.Nombre, info.Profesor_nom, info.Semestre);
-        table_groups_2.innerHTML = table_groups_2.innerHTML + `
+        table_groups_2.innerHTML = table_groups_2.innerHTML + ` 
+        <tr>
+          <th>Clave</th>
+          <th>Laboratorio</th>
+          <th>Semestre</th>
+          <th>CR</th>
+          <th>Grupo</th>
+          <th>Aula</th>
+          <th>Profesor</th>
+          <th>Lunes</th>
+          <th>Martes</th>
+          <th>Miercoles</th>
+          <th>Jueves</th>
+          <th>Viernes</th>
+          <th>Sabado</th>
+        </tr>
                 <tr>
                 <td>${group_ac.Clave}</td>
                 <td>${group_ac.Nombre}</td>
@@ -236,8 +236,47 @@ function set_info_form_teachers_2(id_button_form_group) {
                 <td>${group_ac.Dias[4]}</td>
                 <td>${group_ac.Dias[5]}</td>
                 </tr>                               
-                `
+                `;
       }
     });
   });
+}
+
+
+//Para mostrar los alumnos inscritos en cada grupo
+var table_students = document.querySelector("#show_students_form_teacher");
+
+function show_students_form_group(id_button_form_group) {
+  fs.collection("inscription").get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      const id_grupos = [doc.IDGrupos];
+      for (var i = 0; i < id_grupos.length; i++) {
+        if (id_grupos[i] == id_button_form_group) {
+          var number_account = doc.NumCuenta;
+          fs.collection("users").where("NumCuenta", "==", number_account).get().then(function (querySelector) {
+            querySnapshot.forEach(function (doc) {
+              // doc.data() is never undefined for query doc snapshots
+              var info = doc.data();
+              var id_bot = doc.id;
+              //id_goblal = id_bot;
+              var student_ac = new student(info.NumCuenta, info.Nombre, info.Correo);
+              table_students.innerHTML = table_students.innerHTML + `
+                <tr>
+                  <th>Clave</th>
+                  <th>Laboratorio</th>
+                  <th>Semestre</th>
+                </tr>        
+                  <tr>
+                    <td>${student_ac.NumCuenta}</td>
+                    <td>${student_ac.Nombre}</td>
+                    <td>${student_ac.Correo}</td>
+                  </tr>                               
+                `
+            });
+          });
+        }
+      }
+    });
+  });
+
 }
