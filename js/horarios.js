@@ -25,6 +25,7 @@ const setUser = (user) => {
     local_user.photoUrl = user_active.photoURL;
     local_user.emailVerified = user_active.emailVerified;
     showUserByEmail(local_user.email.toLowerCase());
+    setActionUpdate();
   } else {
     local_user.name = "Unknowed";
   }
@@ -49,32 +50,6 @@ const showUserByEmail = async (email) => {
       console.log("Error getting documents xD: ", error);
     });
 }
-
-// Cerrar sesion 
-const logout = document.querySelector('#logout-btn');
-logout.addEventListener('click', e => {
-  e.preventDefault();
-  auth
-    .signOut()
-    .then(() => {
-      console.log("Cerraste sesion");
-      $('#close-question').modal('hide');
-      window.location = "index.html";
-    });
-});
-
-// informacion del usuario
-//Estado de usuario
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    setUser(user);
-    setAcion();
-    //ID Sandra("BFhfhzXQvsHLQj6t1OQO") ID Rodrigo("hL4UJEsIITomzuuykJva");
-  } else {
-    console.log("no hay usuario activo");
-  }
-});
-
 
 function Group(croom, key, credits, quota, days, no_group, id_teacher, name, teacher_name, semester) {
   this.Aula = croom;
@@ -149,18 +124,17 @@ function set_info_form_teachers(id_teacher_act) {
             <td>${group_ac.Dias[3]}</td>
             <td>${group_ac.Dias[4]}</td>
             <td>${group_ac.Dias[5]}</td>
-            <td><button type="button" class="clave" data-id="${id_bot}"></button></td>
+            <td><button type="button" class="clave dl" data-id="${id_bot}" onclick="setActionUpdate()"></button></td>
             </tr>                               
             `
     });
   });
-
 }
 
 function setAcion() {
   const array_bot = document.querySelectorAll(".clave");
   for (let index = 0; index < array_bot.length; index++) {
-    array.bot[index].addEventListener('click', ()=>{
+    array.bot[index].addEventListener('click', () => {
       var id = array_bot[index].getAttribute("data-id");
       alert(id);
       /*grupo_selec = id;
@@ -170,6 +144,10 @@ function setAcion() {
     })
 
   }
+}
+function setActionUpdate() {
+  var id = this.getAttribute('data-id');
+          alert(id);
 }
 
 
@@ -241,3 +219,29 @@ function set_info_form_teachers_2(id_button_form_group) {
     });
   });
 }
+
+
+// Cerrar sesion 
+const logout = document.querySelector('#logout-btn');
+logout.addEventListener('click', e => {
+  e.preventDefault();
+  auth
+    .signOut()
+    .then(() => {
+      console.log("Cerraste sesion");
+      $('#close-question').modal('hide');
+      window.location = "index.html";
+    });
+});
+
+// informacion del usuario
+//Estado de usuario
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    setUser(user);
+    setActionUpdate()
+    //ID Sandra("BFhfhzXQvsHLQj6t1OQO") ID Rodrigo("hL4UJEsIITomzuuykJva");
+  } else {
+    console.log("no hay usuario activo");
+  }
+});
