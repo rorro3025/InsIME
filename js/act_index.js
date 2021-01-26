@@ -34,7 +34,11 @@ sing_in.addEventListener('submit', (e) => {
                 }else{
                   if(user.Tipo == 2){
                     console.log(user.Nombre + " "+ "Estudiante");
-                    window.location = "menu_student.html";
+                    if(user.Estado == "Aceptado"){
+                      window.location = "menu_student.html";
+                    }else{
+                      alert("Tu cuenta aún no es aceptada por el personal de la Facultad, espera a que sea aceptada, si el problema persiste comunicate a la coordinación de tu carrera: coordinacion.ime.fesc.unam@gmail.com");
+                    }
                   }else{
                     console.log(user.Nombre + " "+ "Profesor");
                     window.location = "menu_teach.html";
