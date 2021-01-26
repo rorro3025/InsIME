@@ -191,6 +191,7 @@ function set_info_form_teachers(id_teacher_act) {
   });
 }
 
+//Esta función aún no sirve
 //Mostrar a los profesores sus grupos asignados en específico
 var table_groups_2 = document.querySelector("#show_groups_form_teacher_2");
 var table_one_es_clean = document.querySelector("#show_groups_form_teacher");
@@ -206,7 +207,7 @@ function set_info_form_teachers_2(id_button_form_group) {
       if (doc.id == id_button_form_group) {
         var group_ac = new Group(info.Aula, info.Clave, info.Creditos, info.Cupo, info.Dias, info.Grupo, info.Id_profesor, info.Nombre, info.Profesor_nom, info.Semestre);
         table_groups_2.innerHTML = table_groups_2.innerHTML + ` 
-        <tr>
+        <tr> 
           <th>Clave</th>
           <th>Laboratorio</th>
           <th>Semestre</th>
