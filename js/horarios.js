@@ -92,6 +92,12 @@ function Group(croom, key, credits, quota, days, no_group, id_teacher, name, tea
   this.Semestre = semester;
 }
 
+function student_constrct(number_account, name, email) {
+  this.NumCuenta = number_account;
+  this.Nombre = name;
+  this.Correo = email;
+}
+
 // evento de cambios en fs
 const onGetGroup = (callback) => fs.collection("groups").onSnapshot(callback);
 auth.onAuthStateChanged(user => {
@@ -247,37 +253,43 @@ function set_info_form_teachers_2(id_button_form_group) {
 //Para mostrar los alumnos inscritos en cada grupo
 var table_students = document.querySelector("#show_students_form_teacher");
 
-function show_students_form_group(id_button_form_group) {
-  fs.collection("inscription").get().then(function (querySnapshot) {
+async function show_students_form_group (id_button_form_group) {
+  var group_c = await getGruop(id_button_form_group);
+  const group = group_c.data();
+  var array_students = group.Alumnos_Ins;
+  table_students.innerHTML = `
+    <tr>
+      <th>Número de Cuenta</th>
+      <th>Nombre</th>
+      <th>Correo</th>
+    </tr>  
+    `;
+  var new_array = [];
+  var array_students_2 = [];
+  var array_name = [];
+  var array_email = [];
+  var info = "";
+  fs.collection("users").where("Tipo","==",2).get().then(function (querySnapshot){
     querySnapshot.forEach(function (doc) {
-      const id_grupos = [doc.IDGrupos];
-      for (var i = 0; i < id_grupos.length; i++) {
-        if (id_grupos[i] == id_button_form_group) {
-          var number_account = doc.NumCuenta;
-          fs.collection("users").where("NumCuenta", "==", number_account).get().then(function (querySelector) {
-            querySnapshot.forEach(function (doc) {
-              // doc.data() is never undefined for query doc snapshots
-              var info = doc.data();
-              var id_bot = doc.id;
-              //id_goblal = id_bot;
-              var student_ac = new student(info.NumCuenta, info.Nombre, info.Correo);
-              table_students.innerHTML = table_students.innerHTML + `
-                <tr>
-                  <th>Clave</th>
-                  <th>Laboratorio</th>
-                  <th>Semestre</th>
-                </tr>        
-                  <tr>
-                    <td>${student_ac.NumCuenta}</td>
-                    <td>${student_ac.Nombre}</td>
-                    <td>${student_ac.Correo}</td>
-                  </tr>                               
-                `
-            });
-          });
+      var students_g = doc.data();
+      info = doc.data();
+            var id_bot = doc.id;
+      array_students_2.push(students_g.NumCuenta);
+      array_name.push(students_g.Nombre);
+      array_email.push(students_g.Correo);
+      });
+    for (var i = 0; i < array_students.length; i++) {
+        for (var m = 0; m < array_students_2.length; m++) {
+          if(array_students[i] == array_students_2[m]){
+            table_students.innerHTML = table_students.innerHTML + `      
+            <tr>
+              <td>${array_students_2[m]}</td>
+              <td>${array_name[m]}</td>
+              <td>${array_email[m]}</td>
+            </tr>                               
+            `
+            }
+          }
         }
-      }
     });
-  });
-
 }
