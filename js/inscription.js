@@ -57,7 +57,7 @@ const showUserByEmail = async (email) => {
                     var know = table.innerHTML.search(asignature_info.Nombre);
                     if (know == -1) {
                         table.innerHTML = table.innerHTML + `
-                    <tr class"nom_gruoup" id="${doc.id}">
+                    <tr class="nom_gruoup" id="${doc.id}">
                         <td>${asignature_info.Clave}</td>
                         <td>${asignature_info.Nombre}</td>
                         <td>${asignature_info.Creditos}</td>
@@ -68,7 +68,7 @@ const showUserByEmail = async (email) => {
                 });
                 var btn_finish = document.querySelector('#btn-finish');
                 btn_finish.addEventListener('click', () => {
-                    alert("seguro?");
+                    alert("¿Estas seguro?");
                     finishIns(local_user.num_account);
                 });
 
@@ -94,16 +94,16 @@ logout.addEventListener('click', e => {
 //
 
 //Enviar nueva informacion 
-function finishIns(account_alum) {
-    alert(account_alum);
+async function finishIns(account_alum) {
     const number_groups = document.querySelectorAll(".nom_gruoup");
     console.log(number_groups);
     for (let index = 0; index < number_groups.length; index++) {
         var id_gropup_actual = number_groups[index].getAttribute("id");
         console.log(id_gropup_actual);
-        let group_doc = getGroup(id_gropup_actual);
+        let group_doc = await getGroup(id_gropup_actual);
         let group_data = group_doc.data();
         var array = group_data.Alumnos_Ins;
+        var cupo = parseInt(group_data.Cupo_res,10);
         let x = 0;
         for (let index = 0; index < array.length; index++) {
             if (array[index] == account_alum) {
@@ -112,17 +112,22 @@ function finishIns(account_alum) {
         }
         if (x == 0) {
             array.push(account_alum);
-            fs.collection('groups').doc(id_group).update({
-                Alumnos_Ins: array
+            fs.collection('groups').doc(id_gropup_actual).update({
+                Alumnos_Ins: array,
+                Cupo_res: cupo - 1
             })
                 .then(
-                    alert("Te has inscrito exitosamente")
+                    alert("Te has inscrito exitosamente al "+ group_data.Nombre)
                 )
-                .catch(
-                    alert("algun error actualizando el grupo: " + id_gropup_actual)
-                );
+                .catch( function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorCode +" es "+ errorMessage)
+                }       
+                )
         } else {
-            alert("Ya estas inscrito aqui");
+            alert("Ya estas inscrito a " + group_data.Nombre);
         }
     }
 
