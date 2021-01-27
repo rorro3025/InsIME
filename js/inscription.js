@@ -4,6 +4,8 @@ console.log("inscripcion");
 const fs = firebase.firestore();
 const auth = firebase.auth();
 
+//consulta grupo
+const getGroup = (id) => fs.collection("groups").doc(id).get();
 
 const local_user = {
     name: "",
@@ -43,7 +45,22 @@ const showUserByEmail = async (email) => {
                 local_user.semester = student.Semestre;
                 console.log("Existe usuario activo name: " + local_user.name, "Email: " + local_user.email);
                 setInfo();
-                form_combo_groups(local_user.semester);
+                setGroupAvalible(local_user.semester);
+                // funciones de alta, baja y terminar
+                var btn_up = document.querySelector("#btn-up");
+                btn_up.addEventListener('click', async () => {
+                   var asignature = document.querySelector("#name_form_groups").value;
+                   var doc = await getGroup(asignature);
+                   var asignature_info = doc.data(); 
+                    var table = document.querySelector("#table_inscription");
+                    table.innerHTML = table.innerHTML + `
+        <tr>
+        <td>${asignature_info.Clave}</td>
+        <td>${asignature_info.Nombre}</td>
+        <td>${asignature_info.Creditos}</td>
+        </tr>
+    `
+                });
             });
         })
         .catch(function (error) {
@@ -77,28 +94,34 @@ auth.onAuthStateChanged((user) => {
 /// correcciones 
 //llenado del formulario
 function setInfo() {
-            var name = document.querySelector("#name_form_student");
-            name.value = local_user.name;
-            var account_number = document.querySelector("#no_cuenta_form_student");
-            account_number.value = local_user.num_account;
-            var career = document.querySelector("#carrer_form_student");
-            career.value = local_user.career;
-            var email = document.querySelector("#email_form_student");
-            email.value = local_user.email;
-            var semester = document.querySelector("#semester_form_student");
-            semester.value = local_user.semester;
-            
-        }
+    var name = document.querySelector("#name_form_student");
+    name.value = local_user.name;
+    var account_number = document.querySelector("#no_cuenta_form_student");
+    account_number.value = local_user.num_account;
+    var career = document.querySelector("#carrer_form_student");
+    career.value = local_user.career;
+    var email = document.querySelector("#email_form_student");
+    email.value = local_user.email;
+    var semester = document.querySelector("#semester_form_student");
+    semester.value = local_user.semester;
 
-function form_combo_groups(semester) {
-    fs.collection("groups").where("Semestre", "==", semester).get().then(function (querySnapshot) {
+}
+
+function setGroupAvalible(semester) {
+    var cb = document.querySelector("#name_form_groups");
+    var set_html = "no cambio";
+    var cadena = semester.toString();
+    console.log(cadena);
+    fs.collection("groups").where("Semestre", "==", cadena).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-            var semester_g = [doc.Nombre];
-
-            semester_g.short();
-
-            addOptions("Laboratorios", semester_g);
+            var materia_id = doc.id;
+            var materia_info = doc.data();
+            var html = `
+          <option value="${materia_id}">${materia_info.Nombre}</option>
+          `;
+            set_html = set_html + html;
         });
+        cb.innerHTML = set_html;
     });
 }
 
@@ -111,3 +134,4 @@ function addOptions(domElement, array) {
         select.add(option);
     }
 }
+//name_form_groups
