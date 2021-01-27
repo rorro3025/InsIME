@@ -88,6 +88,7 @@ function setActionDelete() {
     for (let index = 0; index < array_bot.length; index++) {
         array_bot[index].addEventListener('click', () => {
             var id = array_bot[index].getAttribute('data-id');
+            alert("¿seguro?")
             deleteGroup(id);
             console.log("Se elimino el grupo");
         });

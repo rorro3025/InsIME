@@ -50,31 +50,28 @@ const showUserByEmail = async (email) => {
                 //Para alta
                 var btn_up = document.querySelector("#btn-up");
                 btn_up.addEventListener('click', async () => {
-                   var asignature = document.querySelector("#name_form_groups").value;
-                   var doc = await getGroup(asignature);
-                   var asignature_info = doc.data(); 
+                    var asignature = document.querySelector("#name_form_groups").value;
+                    var doc = await getGroup(asignature);
+                    var asignature_info = doc.data();
                     var table = document.querySelector("#table_inscription");
                     var know = table.innerHTML.search(asignature_info.Nombre);
-                    if (know==-1) {
-                    table.innerHTML = table.innerHTML + `
-                    <tr>
+                    if (know == -1) {
+                        table.innerHTML = table.innerHTML + `
+                    <tr class"nom_gruoup" id="${doc.id}">
                         <td>${asignature_info.Clave}</td>
                         <td>${asignature_info.Nombre}</td>
                         <td>${asignature_info.Creditos}</td>
                     </tr>
-                    `   }else{
+                    `   } else {
                         alert("Ya lo has agregado");
                     }
                 });
-                //Para baja
+                var btn_finish = document.querySelector('#btn-finish');
+                btn_finish.addEventListener('click', () => {
+                    alert("seguro?");
+                    finishIns(local_user.num_account);
+                });
 
-                //Para terminar
-                /*var btn_finish = document.querySelector('#btn-finish');
-                btn_finish.addEventListener('click', asyn () =>{
-                    var array_groups = document.querySelector("#table_inscription").value;
-                    console.log(array_groups);
-                });*/
-                
             });
         })
         .catch(function (error) {
@@ -94,6 +91,42 @@ logout.addEventListener('click', e => {
             window.location = "index.html";
         });
 });
+//
+
+//Enviar nueva informacion 
+function finishIns(account_alum) {
+    alert(account_alum);
+    const number_groups = document.querySelectorAll(".nom_gruoup");
+    console.log(number_groups);
+    for (let index = 0; index < number_groups.length; index++) {
+        var id_gropup_actual = number_groups[index].getAttribute("id");
+        console.log(id_gropup_actual);
+        let group_doc = getGroup(id_gropup_actual);
+        let group_data = group_doc.data();
+        var array = group_data.Alumnos_Ins;
+        let x = 0;
+        for (let index = 0; index < array.length; index++) {
+            if (array[index] == account_alum) {
+                x = 1;
+            };
+        }
+        if (x == 0) {
+            array.push(account_alum);
+            fs.collection('groups').doc(id_group).update({
+                Alumnos_Ins: array
+            })
+                .then(
+                    alert("Te has inscrito exitosamente")
+                )
+                .catch(
+                    alert("algun error actualizando el grupo: " + id_gropup_actual)
+                );
+        } else {
+            alert("Ya estas inscrito aqui");
+        }
+    }
+
+}
 
 // informacion del usuario
 //Estado de usuario
