@@ -4,6 +4,7 @@ var id_goblal = "";
 //Informacion de usuario activo
 
 const local_group = {
+    students: "",
     classroom: "",
     key: "",
     credits: "",
@@ -22,6 +23,7 @@ const setGroup = (group) => {
     if (group) {
         var group_active = auth.currentUser;
         //local_group.name = group_active.displayName;
+        local_group.students = group_active.students;
         local_group.classroom = group_active.classroom;
         local_group.key = group_active.key;
         local_group.credits = group_active.credits;
@@ -49,6 +51,7 @@ const form_group_create = document.querySelector("#form_group_create");
 
 form_group_create.addEventListener('submit', (e) => {
     e.preventDefault();
+    const students = [];
     const classroom = document.querySelector("#classroom_form_group").value;
     const key = document.querySelector("#key_form_group").value;
     const credits = document.querySelector("#credits_form_group").value;
@@ -67,6 +70,7 @@ form_group_create.addEventListener('submit', (e) => {
     const teacher_name = document.querySelector("#teacher_name_form_group").value;
     const semester = document.querySelector("#semester_form_group").value;
     fs.collection("groups").add({
+                    Alumnos_Ins: students,
                     Aula: classroom,
                     Clave: key,
                     Creditos: credits,
