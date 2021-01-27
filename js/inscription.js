@@ -47,20 +47,34 @@ const showUserByEmail = async (email) => {
                 setInfo();
                 setGroupAvalible(local_user.semester);
                 // funciones de alta, baja y terminar
+                //Para alta
                 var btn_up = document.querySelector("#btn-up");
                 btn_up.addEventListener('click', async () => {
                    var asignature = document.querySelector("#name_form_groups").value;
                    var doc = await getGroup(asignature);
                    var asignature_info = doc.data(); 
                     var table = document.querySelector("#table_inscription");
+                    var know = table.innerHTML.search(asignature_info.Nombre);
+                    if (know==-1) {
                     table.innerHTML = table.innerHTML + `
-        <tr>
-        <td>${asignature_info.Clave}</td>
-        <td>${asignature_info.Nombre}</td>
-        <td>${asignature_info.Creditos}</td>
-        </tr>
-    `
+                    <tr>
+                        <td>${asignature_info.Clave}</td>
+                        <td>${asignature_info.Nombre}</td>
+                        <td>${asignature_info.Creditos}</td>
+                    </tr>
+                    `   }else{
+                        alert("Ya lo has agregado");
+                    }
                 });
+                //Para baja
+
+                //Para terminar
+                /*var btn_finish = document.querySelector('#btn-finish');
+                btn_finish.addEventListener('click', asyn () =>{
+                    var array_groups = document.querySelector("#table_inscription").value;
+                    console.log(array_groups);
+                });*/
+                
             });
         })
         .catch(function (error) {
