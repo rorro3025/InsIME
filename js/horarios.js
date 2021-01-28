@@ -78,12 +78,12 @@ auth.onAuthStateChanged((user) => {
 });
 
 
-function Group(croom, key, credits, quota, days, no_group, id_teacher, name, teacher_name, semester) {
+function Group(croom, key, credits, quota_res, days, no_group, id_teacher, name, teacher_name, semester) {
   this.Aula = croom;
   this.Clave = key;
   this.Creditos = credits,
-    this.Cupo = quota,
-    this.Cupo_res = quota;
+    //this.Cupo = quota,
+    this.Cupo_res = quota_res;
   this.Dias = days;
   this.Grupo = no_group;
   this.Id_profesor = id_teacher;
@@ -140,13 +140,14 @@ function set_info() {
       var info = doc.data();
       var id_bot = doc.id;
       //id_goblal = id_bot;
-      var group_ac = new Group(info.Aula, info.Clave, info.Creditos, info.Cupo, info.Dias, info.Grupo, info.Id_profesor, info.Nombre, info.Profesor_nom, info.Semestre);
+      var group_ac = new Group(info.Aula, info.Clave, info.Creditos, info.Cupo_res, info.Dias, info.Grupo, info.Id_profesor, info.Nombre, info.Profesor_nom, info.Semestre);
       table_groups_horarios.innerHTML = table_groups_horarios.innerHTML + `
             <tr>
             <td>${group_ac.Clave}</td>
             <td>${group_ac.Nombre}</td>
             <td>${group_ac.Semestre}</td>
             <td>${group_ac.Creditos}</td>
+            <td>${group_ac.Cupo_res}</td>
             <td>${group_ac.Grupo}</td>
             <td>${group_ac.Aula}</td>
             <td>${group_ac.Profesor_nom}</td>
