@@ -61,7 +61,7 @@ const showUserByEmail = async (email) => {
                         <td>${asignature_info.Clave}</td>
                         <td>${asignature_info.Nombre}</td>
                         <td>${asignature_info.Creditos}</td>
-                        <td><input type="button" class="borrar btn btn-danger" value="baja" /></td>
+                        <td><input type="button" class="eliminar dl-bot" /></td>
                     </tr>
                     `   } else {
                         alert("Ya lo has agregado");
@@ -73,13 +73,13 @@ const showUserByEmail = async (email) => {
                     finishIns(local_user.num_account);
                 });
                 $(function () {
-                    $(document).on('click', '.borrar', function (event) {
+                    $(document).on('click', '.eliminar', function (event) {
                         event.preventDefault();
                         $(this).closest('tr').remove();
                     });
                 });
                 $(function () {
-                    $(document).on('click', '.borrar', function (event) {
+                    $(document).on('click', '.eliminar', function (event) {
                         event.preventDefault();
                         $(this).closest('tr').remove();
                     });
