@@ -71,7 +71,13 @@ const showUserByEmail = async (email) => {
                     alert("¿Estas seguro?");
                     finishIns(local_user.num_account);
                 });
-
+                var btn_down = document.querySelector("#btn-down");
+                btn_down.addEventListener('click', ()=>{
+                    let table = document.querySelector("#table_inscription");
+                    var asignature = document.querySelector("#name_form_groups").value;
+                    var dl_a = document.getElementById(asignature);
+                    table.removeChild(dl_a); 
+                })
             });
         })
         .catch(function (error) {
