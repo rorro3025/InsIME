@@ -61,6 +61,7 @@ const showUserByEmail = async (email) => {
                         <td>${asignature_info.Clave}</td>
                         <td>${asignature_info.Nombre}</td>
                         <td>${asignature_info.Creditos}</td>
+                        <td><input type="button" class="eliminar dl-bot" /></td>
                     </tr>
                     `   } else {
                         alert("Ya lo has agregado");
@@ -71,7 +72,18 @@ const showUserByEmail = async (email) => {
                     alert("¿Estas seguro?");
                     finishIns(local_user.num_account);
                 });
-
+                $(function () {
+                    $(document).on('click', '.eliminar', function (event) {
+                        event.preventDefault();
+                        $(this).closest('tr').remove();
+                    });
+                });
+                $(function () {
+                    $(document).on('click', '.eliminar', function (event) {
+                        event.preventDefault();
+                        $(this).closest('tr').remove();
+                    });
+                });
             });
         })
         .catch(function (error) {
@@ -103,7 +115,7 @@ async function finishIns(account_alum) {
         let group_doc = await getGroup(id_gropup_actual);
         let group_data = group_doc.data();
         var array = group_data.Alumnos_Ins;
-        var cupo = parseInt(group_data.Cupo_res,10);
+        var cupo = parseInt(group_data.Cupo_res, 10);
         let x = 0;
         for (let index = 0; index < array.length; index++) {
             if (array[index] == account_alum) {
@@ -117,14 +129,14 @@ async function finishIns(account_alum) {
                 Cupo_res: cupo - 1
             })
                 .then(
-                    alert("Te has inscrito exitosamente al "+ group_data.Nombre)
+                    alert("Te has inscrito exitosamente al " + group_data.Nombre)
                 )
-                .catch( function(error) {
+                .catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    console.log(errorCode +" es "+ errorMessage)
-                }       
+                    console.log(errorCode + " es " + errorMessage)
+                }
                 )
         } else {
             alert("Ya estas inscrito a " + group_data.Nombre);

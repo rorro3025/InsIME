@@ -34,7 +34,12 @@ sing_in.addEventListener('submit', (e) => {
                 }else{
                   if(user.Tipo == 2){
                     console.log(user.Nombre + " "+ "Estudiante");
-                    window.location = "menu_student.html";
+                    if(user.Estado=="Aceptado"){
+                      window.location = "menu_student.html";
+                    }else{
+                      alert("Podrás ingresar hasta que las autoridades administrativas de la carrera de IME de la FESC-C4 te de acceso");
+                    }
+  
                   }else{
                     console.log(user.Nombre + " "+ "Profesor");
                     window.location = "menu_teach.html";
